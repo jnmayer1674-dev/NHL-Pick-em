@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256">
-  <rect width="100%" height="100%" rx="40" ry="40" fill="#111827"/>
-  <text x="50%" y="46%" text-anchor="middle" font-size="44" fill="#e5e7eb"
-        font-family="Arial" font-weight="700">UTA</text>
-  <text x="50%" y="64%" text-anchor="middle" font-size="18" fill="#9ca3af"
-        font-family="Arial">Mammoth</text>
-</svg>
