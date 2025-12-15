@@ -203,3 +203,5 @@ tbody tr.illegal:hover{ background: transparent; }
 .pts-col{ display:none; }
 
 .footer{ margin-top: 14px; padding: 10px 2px; }
+
+.data-label { display: none !important; }
