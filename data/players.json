@@ -1,19 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2025-12-15T17:49:32.153Z",
+    "generatedAt": "2025-12-15T18:30:37.514Z",
     "seasons": [
       "20242025",
       "20232024",
       "20222023",
       "20212022",
-      "20202021"
+      "20202021",
+      "20192020",
+      "20182019"
     ],
-    "count": 302,
-    "eligibility": {
-      "skaters": "GP>50",
-      "goalies": "GP>15"
-    },
-    "notes": "draftPoints = best eligible season points in last-5 completed seasons; ARI mapped to UTAH."
+    "count": 423,
+    "notes": "draftPoints = best season fantasyPoints within last 7 completed seasons; team = most recent team within window; ARI mapped to UTAH; multi-team strings use last team."
   },
   "players": [
     {
@@ -35,7 +33,7 @@
     {
       "id": "8476453",
       "name": "Nikita Kucherov",
-      "pos": "R",
+      "pos": "RW",
       "team": "TBL",
       "draftPoints": 144,
       "bestSeason": "20232024"
@@ -60,7 +58,7 @@
       "id": "8476999",
       "name": "Linus Ullmark",
       "pos": "G",
-      "team": "BOS",
+      "team": "OTT",
       "draftPoints": 131.6,
       "bestSeason": "20222023"
     },
@@ -73,42 +71,42 @@
       "bestSeason": "20222023"
     },
     {
+      "id": "8476883",
+      "name": "Andrei Vasilevskiy",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": 126.5,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8474593",
       "name": "Jacob Markstrom",
       "pos": "G",
-      "team": "CGY",
+      "team": "NJD",
       "draftPoints": 125.7,
       "bestSeason": "20212022"
     },
     {
       "id": "8478550",
       "name": "Artemi Panarin",
-      "pos": "L",
+      "pos": "LW",
       "team": "NYR",
       "draftPoints": 120,
       "bestSeason": "20232024"
     },
     {
-      "id": "8476883",
-      "name": "Andrei Vasilevskiy",
-      "pos": "G",
-      "team": "TBL",
-      "draftPoints": 116.1,
-      "bestSeason": "20242025"
-    },
-    {
       "id": "8476346",
       "name": "Johnny Gaudreau",
-      "pos": "L",
-      "team": "CGY",
+      "pos": "LW",
+      "team": "CBJ",
       "draftPoints": 115,
       "bestSeason": "20212022"
     },
     {
       "id": "8476456",
       "name": "Jonathan Huberdeau",
-      "pos": "L",
-      "team": "FLA",
+      "pos": "LW",
+      "team": "CGY",
       "draftPoints": 115,
       "bestSeason": "20212022"
     },
@@ -116,14 +114,14 @@
       "id": "8480382",
       "name": "Alexandar Georgiev",
       "pos": "G",
-      "team": "COL",
+      "team": "SJS",
       "draftPoints": 113.9,
       "bestSeason": "20222023"
     },
     {
       "id": "8477956",
       "name": "David Pastrnak",
-      "pos": "R",
+      "pos": "RW",
       "team": "BOS",
       "draftPoints": 113,
       "bestSeason": "20222023"
@@ -132,9 +130,25 @@
       "id": "8475311",
       "name": "Darcy Kuemper",
       "pos": "G",
-      "team": "COL",
+      "team": "LAK",
       "draftPoints": 112.6,
       "bestSeason": "20212022"
+    },
+    {
+      "id": "8471750",
+      "name": "Ben Bishop",
+      "pos": "G",
+      "team": "DAL",
+      "draftPoints": 111.6,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8474141",
+      "name": "Patrick Kane",
+      "pos": "RW",
+      "team": "DET",
+      "draftPoints": 110,
+      "bestSeason": "20182019"
     },
     {
       "id": "8478009",
@@ -147,7 +161,7 @@
     {
       "id": "8480027",
       "name": "Jason Robertson",
-      "pos": "L",
+      "pos": "LW",
       "team": "DAL",
       "draftPoints": 109,
       "bestSeason": "20222023"
@@ -155,7 +169,7 @@
     {
       "id": "8479314",
       "name": "Matthew Tkachuk",
-      "pos": "L",
+      "pos": "LW",
       "team": "FLA",
       "draftPoints": 109,
       "bestSeason": "20222023"
@@ -177,9 +191,17 @@
       "bestSeason": "20222023"
     },
     {
+      "id": "8475683",
+      "name": "Sergei Bobrovsky",
+      "pos": "G",
+      "team": "FLA",
+      "draftPoints": 108.3,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8478864",
       "name": "Kirill Kaprizov",
-      "pos": "L",
+      "pos": "LW",
       "team": "MIN",
       "draftPoints": 108,
       "bestSeason": "20212022"
@@ -203,8 +225,8 @@
     {
       "id": "8478420",
       "name": "Mikko Rantanen",
-      "pos": "R",
-      "team": "COL",
+      "pos": "RW",
+      "team": "DAL",
       "draftPoints": 105,
       "bestSeason": "20222023"
     },
@@ -228,7 +250,7 @@
       "id": "8476468",
       "name": "J.T. Miller",
       "pos": "C",
-      "team": "VAN",
+      "team": "NYR",
       "draftPoints": 103,
       "bestSeason": "20232024"
     },
@@ -243,10 +265,18 @@
     {
       "id": "8478483",
       "name": "Mitch Marner",
-      "pos": "R",
+      "pos": "RW",
       "team": "TOR",
       "draftPoints": 102,
       "bestSeason": "20242025"
+    },
+    {
+      "id": "8470594",
+      "name": "Marc-Andre Fleury",
+      "pos": "G",
+      "team": "MIN",
+      "draftPoints": 101.3,
+      "bestSeason": "20182019"
     },
     {
       "id": "8474578",
@@ -257,12 +287,28 @@
       "bestSeason": "20222023"
     },
     {
-      "id": "8475683",
-      "name": "Sergei Bobrovsky",
+      "id": "8471679",
+      "name": "Carey Price",
       "pos": "G",
-      "team": "FLA",
-      "draftPoints": 99.9,
-      "bestSeason": "20232024"
+      "team": "MTL",
+      "draftPoints": 100.1,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8473419",
+      "name": "Brad Marchand",
+      "pos": "LW",
+      "team": "BOS",
+      "draftPoints": 100,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8471675",
+      "name": "Sidney Crosby",
+      "pos": "C",
+      "team": "PIT",
+      "draftPoints": 100,
+      "bestSeason": "20182019"
     },
     {
       "id": "8477465",
@@ -289,9 +335,17 @@
       "bestSeason": "20232024"
     },
     {
+      "id": "8475215",
+      "name": "Robin Lehner",
+      "pos": "G",
+      "team": "VGK",
+      "draftPoints": 98,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8477939",
       "name": "William Nylander",
-      "pos": "R",
+      "pos": "RW",
       "team": "TOR",
       "draftPoints": 98,
       "bestSeason": "20232024"
@@ -299,10 +353,18 @@
     {
       "id": "8478398",
       "name": "Kyle Connor",
-      "pos": "L",
+      "pos": "LW",
       "team": "WPG",
       "draftPoints": 97,
       "bestSeason": "20242025"
+    },
+    {
+      "id": "8477493",
+      "name": "Aleksander Barkov",
+      "pos": "C",
+      "team": "FLA",
+      "draftPoints": 96,
+      "bestSeason": "20182019"
     },
     {
       "id": "8474600",
@@ -316,7 +378,7 @@
       "id": "8475831",
       "name": "Philipp Grubauer",
       "pos": "G",
-      "team": "COL",
+      "team": "SEA",
       "draftPoints": 95.6,
       "bestSeason": "20202021"
     },
@@ -331,7 +393,7 @@
     {
       "id": "8476887",
       "name": "Filip Forsberg",
-      "pos": "L",
+      "pos": "LW",
       "team": "NSH",
       "draftPoints": 94,
       "bestSeason": "20232024"
@@ -353,20 +415,20 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8471675",
-      "name": "Sidney Crosby",
-      "pos": "C",
-      "team": "PIT",
-      "draftPoints": 94,
-      "bestSeason": "20232024"
-    },
-    {
       "id": "8479420",
       "name": "Tage Thompson",
       "pos": "C",
       "team": "BUF",
       "draftPoints": 94,
       "bestSeason": "20222023"
+    },
+    {
+      "id": "8471695",
+      "name": "Tuukka Rask",
+      "pos": "G",
+      "team": "BOS",
+      "draftPoints": 92.4,
+      "bestSeason": "20192020"
     },
     {
       "id": "8480069",
@@ -377,20 +439,20 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8474141",
-      "name": "Patrick Kane",
-      "pos": "R",
-      "team": "CHI",
-      "draftPoints": 92,
-      "bestSeason": "20212022"
-    },
-    {
       "id": "8480800",
       "name": "Quinn Hughes",
       "pos": "D",
       "team": "VAN",
       "draftPoints": 92,
       "bestSeason": "20232024"
+    },
+    {
+      "id": "8471218",
+      "name": "Blake Wheeler",
+      "pos": "RW",
+      "team": "WPG",
+      "draftPoints": 91,
+      "bestSeason": "20182019"
     },
     {
       "id": "8476459",
@@ -401,17 +463,9 @@
       "bestSeason": "20222023"
     },
     {
-      "id": "8470594",
-      "name": "Marc-Andre Fleury",
-      "pos": "G",
-      "team": "VGK",
-      "draftPoints": 90.8,
-      "bestSeason": "20202021"
-    },
-    {
       "id": "8471214",
       "name": "Alex Ovechkin",
-      "pos": "L",
+      "pos": "LW",
       "team": "WSH",
       "draftPoints": 90,
       "bestSeason": "20212022"
@@ -419,7 +473,7 @@
     {
       "id": "8479542",
       "name": "Brandon Hagel",
-      "pos": "L",
+      "pos": "LW",
       "team": "TBL",
       "draftPoints": 90,
       "bestSeason": "20242025"
@@ -427,7 +481,7 @@
     {
       "id": "8479343",
       "name": "Clayton Keller",
-      "pos": "R",
+      "pos": "RW",
       "team": "UTA",
       "draftPoints": 90,
       "bestSeason": "20242025"
@@ -457,20 +511,36 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8477493",
-      "name": "Aleksander Barkov",
-      "pos": "C",
-      "team": "FLA",
-      "draftPoints": 88,
-      "bestSeason": "20212022"
-    },
-    {
       "id": "8479407",
       "name": "Jesper Bratt",
-      "pos": "L",
+      "pos": "LW",
       "team": "NJD",
       "draftPoints": 88,
       "bestSeason": "20242025"
+    },
+    {
+      "id": "8475166",
+      "name": "John Tavares",
+      "pos": "C",
+      "team": "TOR",
+      "draftPoints": 88,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476899",
+      "name": "Matt Murray",
+      "pos": "G",
+      "team": "TOR",
+      "draftPoints": 87.5,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8471469",
+      "name": "Pekka Rinne",
+      "pos": "G",
+      "team": "NSH",
+      "draftPoints": 87.1,
+      "bestSeason": "20182019"
     },
     {
       "id": "8476460",
@@ -484,7 +554,7 @@
       "id": "8475172",
       "name": "Nazem Kadri",
       "pos": "C",
-      "team": "COL",
+      "team": "CGY",
       "draftPoints": 87,
       "bestSeason": "20212022"
     },
@@ -492,7 +562,7 @@
       "id": "8475168",
       "name": "Matt Duchene",
       "pos": "C",
-      "team": "NSH",
+      "team": "DAL",
       "draftPoints": 86,
       "bestSeason": "20212022"
     },
@@ -513,10 +583,18 @@
       "bestSeason": "20242025"
     },
     {
+      "id": "8473512",
+      "name": "Claude Giroux",
+      "pos": "RW",
+      "team": "OTT",
+      "draftPoints": 85,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8477942",
       "name": "Kevin Fiala",
-      "pos": "L",
-      "team": "MIN",
+      "pos": "LW",
+      "team": "LAK",
       "draftPoints": 85,
       "bestSeason": "20212022"
     },
@@ -532,7 +610,7 @@
       "id": "8475789",
       "name": "Jack Campbell",
       "pos": "G",
-      "team": "TOR",
+      "team": "EDM",
       "draftPoints": 84.7,
       "bestSeason": "20212022"
     },
@@ -540,17 +618,33 @@
       "id": "8477404",
       "name": "Jake Guentzel",
       "pos": "C",
-      "team": "PIT",
+      "team": "TBL",
       "draftPoints": 84,
       "bestSeason": "20212022"
     },
     {
+      "id": "8471306",
+      "name": "Thomas Greiss",
+      "pos": "G",
+      "team": "STL",
+      "draftPoints": 83.8,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8480801",
       "name": "Brady Tkachuk",
-      "pos": "L",
+      "pos": "LW",
       "team": "OTT",
       "draftPoints": 83,
       "bestSeason": "20222023"
+    },
+    {
+      "id": "8470613",
+      "name": "Brent Burns",
+      "pos": "D",
+      "team": "CAR",
+      "draftPoints": 83,
+      "bestSeason": "20182019"
     },
     {
       "id": "8471215",
@@ -564,14 +658,14 @@
       "id": "8480039",
       "name": "Martin Necas",
       "pos": "C",
-      "team": "CAR,COL",
+      "team": "COL",
       "draftPoints": 83,
       "bestSeason": "20242025"
     },
     {
       "id": "8475786",
       "name": "Zach Hyman",
-      "pos": "L",
+      "pos": "LW",
       "team": "EDM",
       "draftPoints": 83,
       "bestSeason": "20222023"
@@ -603,15 +697,31 @@
     {
       "id": "8475784",
       "name": "Jeff Skinner",
-      "pos": "L",
+      "pos": "LW",
       "team": "BUF",
       "draftPoints": 82,
       "bestSeason": "20222023"
     },
     {
+      "id": "8473548",
+      "name": "Phil Kessel",
+      "pos": "RW",
+      "team": "UTAH",
+      "draftPoints": 82,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477497",
+      "name": "Sean Monahan",
+      "pos": "C",
+      "team": "CBJ",
+      "draftPoints": 82,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8475765",
       "name": "Vladimir Tarasenko",
-      "pos": "R",
+      "pos": "RW",
       "team": "STL",
       "draftPoints": 82,
       "bestSeason": "20212022"
@@ -641,25 +751,17 @@
       "bestSeason": "20212022"
     },
     {
-      "id": "8473419",
-      "name": "Brad Marchand",
-      "pos": "L",
-      "team": "BOS",
-      "draftPoints": 80,
-      "bestSeason": "20212022"
-    },
-    {
-      "id": "8475166",
-      "name": "John Tavares",
+      "id": "8473604",
+      "name": "Jonathan Toews",
       "pos": "C",
-      "team": "TOR",
-      "draftPoints": 80,
-      "bestSeason": "20222023"
+      "team": "CHI",
+      "draftPoints": 81,
+      "bestSeason": "20182019"
     },
     {
       "id": "8482078",
       "name": "Lucas Raymond",
-      "pos": "L",
+      "pos": "LW",
       "team": "DET",
       "draftPoints": 80,
       "bestSeason": "20242025"
@@ -681,18 +783,18 @@
       "bestSeason": "20222023"
     },
     {
-      "id": "8477949",
-      "name": "Alex Tuch",
-      "pos": "R",
-      "team": "BUF",
-      "draftPoints": 79,
-      "bestSeason": "20222023"
+      "id": "8475794",
+      "name": "Tyler Seguin",
+      "pos": "C",
+      "team": "DAL",
+      "draftPoints": 80,
+      "bestSeason": "20182019"
     },
     {
-      "id": "8473512",
-      "name": "Claude Giroux",
-      "pos": "R",
-      "team": "OTT",
+      "id": "8477949",
+      "name": "Alex Tuch",
+      "pos": "RW",
+      "team": "BUF",
       "draftPoints": 79,
       "bestSeason": "20222023"
     },
@@ -707,24 +809,40 @@
     {
       "id": "8475692",
       "name": "Mats Zuccarello",
-      "pos": "R",
+      "pos": "RW",
       "team": "MIN",
       "draftPoints": 79,
       "bestSeason": "20212022"
     },
     {
+      "id": "8470638",
+      "name": "Patrice Bergeron",
+      "pos": "C",
+      "team": "BOS",
+      "draftPoints": 79,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8478492",
       "name": "Ilya Samsonov",
       "pos": "G",
-      "team": "TOR",
+      "team": "VGK",
       "draftPoints": 78.8,
       "bestSeason": "20222023"
     },
     {
+      "id": "8476412",
+      "name": "Jordan Binnington",
+      "pos": "G",
+      "team": "STL",
+      "draftPoints": 78.8,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8479337",
       "name": "Alex DeBrincat",
-      "pos": "R",
-      "team": "CHI",
+      "pos": "RW",
+      "team": "DET",
       "draftPoints": 78,
       "bestSeason": "20212022"
     },
@@ -739,7 +857,7 @@
     {
       "id": "8473994",
       "name": "Jamie Benn",
-      "pos": "L",
+      "pos": "LW",
       "team": "DAL",
       "draftPoints": 78,
       "bestSeason": "20222023"
@@ -748,17 +866,25 @@
       "id": "8477970",
       "name": "Vitek Vanecek",
       "pos": "G",
-      "team": "NJD",
+      "team": "FLA",
       "draftPoints": 77.4,
       "bestSeason": "20222023"
     },
     {
       "id": "8475184",
       "name": "Chris Kreider",
-      "pos": "L",
+      "pos": "LW",
       "team": "NYR",
       "draftPoints": 77,
       "bestSeason": "20212022"
+    },
+    {
+      "id": "8475158",
+      "name": "Ryan O'Reilly",
+      "pos": "C",
+      "team": "NSH",
+      "draftPoints": 77,
+      "bestSeason": "20182019"
     },
     {
       "id": "8476389",
@@ -772,9 +898,25 @@
       "id": "8475660",
       "name": "Cam Talbot",
       "pos": "G",
-      "team": "MIN",
+      "team": "DET",
       "draftPoints": 76.6,
       "bestSeason": "20212022"
+    },
+    {
+      "id": "8474651",
+      "name": "Braden Holtby",
+      "pos": "G",
+      "team": "DAL",
+      "draftPoints": 76.5,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8471227",
+      "name": "Devan Dubnyk",
+      "pos": "G",
+      "team": "COL",
+      "draftPoints": 76.4,
+      "bestSeason": "20182019"
     },
     {
       "id": "8477504",
@@ -787,31 +929,55 @@
     {
       "id": "8477402",
       "name": "Pavel Buchnevich",
-      "pos": "L",
+      "pos": "LW",
       "team": "STL",
       "draftPoints": 76,
       "bestSeason": "20212022"
     },
     {
+      "id": "8476461",
+      "name": "Sean Couturier",
+      "pos": "C",
+      "team": "PHI",
+      "draftPoints": 76,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476882",
+      "name": "Teuvo Teravainen",
+      "pos": "C",
+      "team": "CHI",
+      "draftPoints": 76,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8478414",
       "name": "Timo Meier",
-      "pos": "R",
-      "team": "SJS",
+      "pos": "RW",
+      "team": "NJD",
       "draftPoints": 76,
       "bestSeason": "20212022"
     },
     {
       "id": "8478439",
       "name": "Travis Konecny",
-      "pos": "R",
+      "pos": "RW",
       "team": "PHI",
       "draftPoints": 76,
       "bestSeason": "20242025"
     },
     {
+      "id": "8470860",
+      "name": "Jaroslav Halak",
+      "pos": "G",
+      "team": "NYR",
+      "draftPoints": 75.8,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8477960",
       "name": "Adrian Kempe",
-      "pos": "R",
+      "pos": "RW",
       "team": "LAK",
       "draftPoints": 75,
       "bestSeason": "20232024"
@@ -825,17 +991,33 @@
       "bestSeason": "20222023"
     },
     {
+      "id": "8476455",
+      "name": "Gabriel Landeskog",
+      "pos": "LW",
+      "team": "COL",
+      "draftPoints": 75,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8474679",
       "name": "Gustav Nyquist",
-      "pos": "R",
+      "pos": "RW",
       "team": "NSH",
       "draftPoints": 75,
       "bestSeason": "20232024"
     },
     {
+      "id": "8474590",
+      "name": "John Carlson",
+      "pos": "D",
+      "team": "WSH",
+      "draftPoints": 75,
+      "bestSeason": "20192020"
+    },
+    {
       "id": "8479385",
       "name": "Jordan Kyrou",
-      "pos": "R",
+      "pos": "RW",
       "team": "STL",
       "draftPoints": 75,
       "bestSeason": "20212022"
@@ -859,7 +1041,7 @@
     {
       "id": "8483808",
       "name": "Andrei Kuzmenko",
-      "pos": "L",
+      "pos": "LW",
       "team": "VAN",
       "draftPoints": 74,
       "bestSeason": "20222023"
@@ -883,10 +1065,42 @@
     {
       "id": "8480893",
       "name": "Kirill Marchenko",
-      "pos": "R",
+      "pos": "RW",
       "team": "CBJ",
       "draftPoints": 74,
       "bestSeason": "20242025"
+    },
+    {
+      "id": "8470966",
+      "name": "Mark Giordano",
+      "pos": "D",
+      "team": "CGY",
+      "draftPoints": 74,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8473563",
+      "name": "Nicklas Backstrom",
+      "pos": "C",
+      "team": "WSH",
+      "draftPoints": 74,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476881",
+      "name": "Tomas Hertl",
+      "pos": "C",
+      "team": "VGK",
+      "draftPoints": 74,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476434",
+      "name": "John Gibson",
+      "pos": "G",
+      "team": "ANA",
+      "draftPoints": 73.5,
+      "bestSeason": "20182019"
     },
     {
       "id": "8477986",
@@ -899,7 +1113,7 @@
     {
       "id": "8478444",
       "name": "Brock Boeser",
-      "pos": "R",
+      "pos": "RW",
       "team": "VAN",
       "draftPoints": 73,
       "bestSeason": "20232024"
@@ -913,9 +1127,25 @@
       "bestSeason": "20222023"
     },
     {
+      "id": "8471276",
+      "name": "David Krejci",
+      "pos": "C",
+      "team": "BOS",
+      "draftPoints": 73,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8475913",
+      "name": "Mark Stone",
+      "pos": "RW",
+      "team": "VGK",
+      "draftPoints": 73,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8481557",
       "name": "Matt Boldy",
-      "pos": "L",
+      "pos": "LW",
       "team": "MIN",
       "draftPoints": 73,
       "bestSeason": "20242025"
@@ -948,7 +1178,7 @@
       "id": "8478406",
       "name": "Mackenzie Blackwood",
       "pos": "G",
-      "team": "SJS,COL",
+      "team": "COL",
       "draftPoints": 72.3,
       "bestSeason": "20242025"
     },
@@ -961,12 +1191,28 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8476412",
-      "name": "Jordan Binnington",
-      "pos": "G",
-      "team": "STL",
+      "id": "8471228",
+      "name": "Alexander Radulov",
+      "pos": "RW",
+      "team": "DAL",
       "draftPoints": 72,
-      "bestSeason": "20232024"
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477503",
+      "name": "Max Domi",
+      "pos": "C",
+      "team": "MTL",
+      "draftPoints": 72,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476853",
+      "name": "Morgan Rielly",
+      "pos": "D",
+      "team": "TOR",
+      "draftPoints": 72,
+      "bestSeason": "20182019"
     },
     {
       "id": "8480280",
@@ -1001,14 +1247,6 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8474590",
-      "name": "John Carlson",
-      "pos": "D",
-      "team": "WSH",
-      "draftPoints": 71,
-      "bestSeason": "20212022"
-    },
-    {
       "id": "8482740",
       "name": "Wyatt Johnston",
       "pos": "C",
@@ -1028,25 +1266,49 @@
       "id": "8477500",
       "name": "Bo Horvat",
       "pos": "C",
-      "team": "VAN,NYI",
+      "team": "NYI",
       "draftPoints": 70,
       "bestSeason": "20222023"
     },
     {
       "id": "8481540",
       "name": "Cole Caufield",
-      "pos": "R",
+      "pos": "RW",
       "team": "MTL",
       "draftPoints": 70,
       "bestSeason": "20242025"
     },
     {
+      "id": "8474149",
+      "name": "Evgenii Dadonov",
+      "pos": "LW",
+      "team": "FLA",
+      "draftPoints": 70,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8477955",
       "name": "Jared McCann",
-      "pos": "L",
+      "pos": "LW",
       "team": "SEA",
       "draftPoints": 70,
       "bestSeason": "20222023"
+    },
+    {
+      "id": "8474053",
+      "name": "Logan Couture",
+      "pos": "C",
+      "team": "SJS",
+      "draftPoints": 70,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8474884",
+      "name": "Mike Hoffman",
+      "pos": "C",
+      "team": "STL",
+      "draftPoints": 70,
+      "bestSeason": "20182019"
     },
     {
       "id": "8480865",
@@ -1059,7 +1321,7 @@
     {
       "id": "8476483",
       "name": "Rickard Rakell",
-      "pos": "R",
+      "pos": "RW",
       "team": "PIT",
       "draftPoints": 70,
       "bestSeason": "20242025"
@@ -1076,38 +1338,38 @@
       "id": "8478024",
       "name": "Ville Husso",
       "pos": "G",
-      "team": "STL",
+      "team": "ANA",
       "draftPoints": 69.6,
       "bestSeason": "20212022"
     },
     {
       "id": "8480830",
       "name": "Andrei Svechnikov",
-      "pos": "R",
+      "pos": "RW",
       "team": "CAR",
       "draftPoints": 69,
       "bestSeason": "20212022"
     },
     {
-      "id": "8476539",
-      "name": "Jonathan Marchessault",
-      "pos": "R",
-      "team": "VGK",
+      "id": "8474715",
+      "name": "Cam Atkinson",
+      "pos": "RW",
+      "team": "CBJ",
       "draftPoints": 69,
-      "bestSeason": "20232024"
+      "bestSeason": "20182019"
     },
     {
-      "id": "8475158",
-      "name": "Ryan O'Reilly",
-      "pos": "C",
-      "team": "NSH",
+      "id": "8476539",
+      "name": "Jonathan Marchessault",
+      "pos": "RW",
+      "team": "VGK",
       "draftPoints": 69,
       "bestSeason": "20232024"
     },
     {
       "id": "8480208",
       "name": "Drake Batherson",
-      "pos": "R",
+      "pos": "RW",
       "team": "OTT",
       "draftPoints": 68,
       "bestSeason": "20242025"
@@ -1123,7 +1385,7 @@
     {
       "id": "8482175",
       "name": "JJ Peterka",
-      "pos": "R",
+      "pos": "RW",
       "team": "BUF",
       "draftPoints": 68,
       "bestSeason": "20242025"
@@ -1133,14 +1395,6 @@
       "name": "Kris Letang",
       "pos": "D",
       "team": "PIT",
-      "draftPoints": 68,
-      "bestSeason": "20212022"
-    },
-    {
-      "id": "8476853",
-      "name": "Morgan Rielly",
-      "pos": "D",
-      "team": "TOR",
       "draftPoints": 68,
       "bestSeason": "20212022"
     },
@@ -1161,22 +1415,6 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8474053",
-      "name": "Logan Couture",
-      "pos": "C",
-      "team": "SJS",
-      "draftPoints": 67,
-      "bestSeason": "20222023"
-    },
-    {
-      "id": "8475913",
-      "name": "Mark Stone",
-      "pos": "R",
-      "team": "VGK",
-      "draftPoints": 67,
-      "bestSeason": "20242025"
-    },
-    {
       "id": "8482093",
       "name": "Seth Jarvis",
       "pos": "C",
@@ -1187,7 +1425,7 @@
     {
       "id": "8478873",
       "name": "Troy Terry",
-      "pos": "R",
+      "pos": "RW",
       "team": "ANA",
       "draftPoints": 67,
       "bestSeason": "20212022"
@@ -1201,6 +1439,14 @@
       "bestSeason": "20242025"
     },
     {
+      "id": "8474161",
+      "name": "Jakub Voracek",
+      "pos": "RW",
+      "team": "CBJ",
+      "draftPoints": 66,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8483457",
       "name": "Lane Hutson",
       "pos": "D",
@@ -1209,17 +1455,25 @@
       "bestSeason": "20242025"
     },
     {
+      "id": "8474157",
+      "name": "Max Pacioretty",
+      "pos": "LW",
+      "team": "VGK",
+      "draftPoints": 66,
+      "bestSeason": "20192020"
+    },
+    {
       "id": "8475798",
       "name": "Mikael Granlund",
       "pos": "C",
-      "team": "SJS,DAL",
+      "team": "DAL",
       "draftPoints": 66,
       "bestSeason": "20242025"
     },
     {
       "id": "8479400",
       "name": "Pierre-Luc Dubois",
-      "pos": "L",
+      "pos": "LW",
       "team": "WSH",
       "draftPoints": 66,
       "bestSeason": "20242025"
@@ -1235,7 +1489,7 @@
     {
       "id": "8475810",
       "name": "Bryan Rust",
-      "pos": "R",
+      "pos": "RW",
       "team": "PIT",
       "draftPoints": 65,
       "bestSeason": "20242025"
@@ -1265,33 +1519,17 @@
       "bestSeason": "20202021"
     },
     {
-      "id": "8470638",
-      "name": "Patrice Bergeron",
-      "pos": "C",
-      "team": "BOS",
-      "draftPoints": 65,
-      "bestSeason": "20212022"
-    },
-    {
       "id": "8477451",
       "name": "Ryan Hartman",
-      "pos": "R",
+      "pos": "RW",
       "team": "MIN",
-      "draftPoints": 65,
-      "bestSeason": "20212022"
-    },
-    {
-      "id": "8476882",
-      "name": "Teuvo Teravainen",
-      "pos": "C",
-      "team": "CAR",
       "draftPoints": 65,
       "bestSeason": "20212022"
     },
     {
       "id": "8476880",
       "name": "Tom Wilson",
-      "pos": "R",
+      "pos": "RW",
       "team": "WSH",
       "draftPoints": 65,
       "bestSeason": "20242025"
@@ -1307,7 +1545,7 @@
     {
       "id": "8473986",
       "name": "Alex Killorn",
-      "pos": "L",
+      "pos": "LW",
       "team": "TBL",
       "draftPoints": 64,
       "bestSeason": "20222023"
@@ -1329,12 +1567,12 @@
       "bestSeason": "20222023"
     },
     {
-      "id": "8476881",
-      "name": "Tomas Hertl",
+      "id": "8475793",
+      "name": "Ryan Johansen",
       "pos": "C",
-      "team": "SJS",
+      "team": "NSH",
       "draftPoints": 64,
-      "bestSeason": "20212022"
+      "bestSeason": "20182019"
     },
     {
       "id": "8478407",
@@ -1345,9 +1583,17 @@
       "bestSeason": "20222023"
     },
     {
+      "id": "8475852",
+      "name": "Petr Mrazek",
+      "pos": "G",
+      "team": "DET",
+      "draftPoints": 63.9,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8482077",
       "name": "Dylan Holloway",
-      "pos": "L",
+      "pos": "LW",
       "team": "STL",
       "draftPoints": 63,
       "bestSeason": "20242025"
@@ -1355,7 +1601,7 @@
     {
       "id": "8474586",
       "name": "Jordan Eberle",
-      "pos": "R",
+      "pos": "RW",
       "team": "SEA",
       "draftPoints": 63,
       "bestSeason": "20222023"
@@ -1371,7 +1617,7 @@
     {
       "id": "8484387",
       "name": "Matvei Michkov",
-      "pos": "R",
+      "pos": "RW",
       "team": "PHI",
       "draftPoints": 63,
       "bestSeason": "20242025"
@@ -1379,7 +1625,7 @@
     {
       "id": "8478047",
       "name": "Michael Bunting",
-      "pos": "L",
+      "pos": "LW",
       "team": "TOR",
       "draftPoints": 63,
       "bestSeason": "20212022"
@@ -1395,26 +1641,26 @@
     {
       "id": "8477940",
       "name": "Nikolaj Ehlers",
-      "pos": "L",
+      "pos": "LW",
       "team": "WPG",
       "draftPoints": 63,
       "bestSeason": "20242025"
     },
     {
-      "id": "8475793",
-      "name": "Ryan Johansen",
-      "pos": "C",
-      "team": "NSH",
+      "id": "8479339",
+      "name": "Patrik Laine",
+      "pos": "LW",
+      "team": "CBJ",
       "draftPoints": 63,
-      "bestSeason": "20212022"
+      "bestSeason": "20192020"
     },
     {
-      "id": "8474161",
-      "name": "Jakub Voracek",
-      "pos": "R",
-      "team": "CBJ",
+      "id": "8471735",
+      "name": "Keith Yandle",
+      "pos": "D",
+      "team": "FLA",
       "draftPoints": 62,
-      "bestSeason": "20212022"
+      "bestSeason": "20182019"
     },
     {
       "id": "8476875",
@@ -1435,7 +1681,7 @@
     {
       "id": "8477479",
       "name": "Tyler Bertuzzi",
-      "pos": "L",
+      "pos": "LW",
       "team": "DET",
       "draftPoints": 62,
       "bestSeason": "20212022"
@@ -1443,18 +1689,10 @@
     {
       "id": "8477444",
       "name": "Andre Burakovsky",
-      "pos": "L",
+      "pos": "LW",
       "team": "COL",
       "draftPoints": 61,
       "bestSeason": "20212022"
-    },
-    {
-      "id": "8470613",
-      "name": "Brent Burns",
-      "pos": "D",
-      "team": "CAR",
-      "draftPoints": 61,
-      "bestSeason": "20222023"
     },
     {
       "id": "8480014",
@@ -1467,26 +1705,34 @@
     {
       "id": "8475791",
       "name": "Taylor Hall",
-      "pos": "L",
+      "pos": "LW",
       "team": "BOS",
       "draftPoints": 61,
       "bestSeason": "20212022"
     },
     {
+      "id": "8475193",
+      "name": "Tomas Tatar",
+      "pos": "LW",
+      "team": "MTL",
+      "draftPoints": 61,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8470610",
+      "name": "Zach Parise",
+      "pos": "LW",
+      "team": "MIN",
+      "draftPoints": 61,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8478971",
       "name": "Connor Ingram",
       "pos": "G",
-      "team": "UTAH",
+      "team": "UTA",
       "draftPoints": 60.5,
       "bestSeason": "20232024"
-    },
-    {
-      "id": "8471218",
-      "name": "Blake Wheeler",
-      "pos": "R",
-      "team": "WPG",
-      "draftPoints": 60,
-      "bestSeason": "20212022"
     },
     {
       "id": "8475745",
@@ -1497,17 +1743,33 @@
       "bestSeason": "20232024"
     },
     {
+      "id": "8474102",
+      "name": "David Perron",
+      "pos": "LW",
+      "team": "STL",
+      "draftPoints": 60,
+      "bestSeason": "20192020"
+    },
+    {
       "id": "8482699",
       "name": "Dylan Guenther",
-      "pos": "R",
+      "pos": "RW",
       "team": "UTA",
       "draftPoints": 60,
       "bestSeason": "20242025"
     },
     {
+      "id": "8476979",
+      "name": "Erik Gustafsson",
+      "pos": "D",
+      "team": "CHI",
+      "draftPoints": 60,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8478366",
       "name": "Frank Vatrano",
-      "pos": "R",
+      "pos": "RW",
       "team": "ANA",
       "draftPoints": 60,
       "bestSeason": "20232024"
@@ -1515,7 +1777,7 @@
     {
       "id": "8477964",
       "name": "Ivan Barbashev",
-      "pos": "L",
+      "pos": "LW",
       "team": "STL",
       "draftPoints": 60,
       "bestSeason": "20212022"
@@ -1535,6 +1797,22 @@
       "team": "VGK",
       "draftPoints": 60,
       "bestSeason": "20232024"
+    },
+    {
+      "id": "8479496",
+      "name": "David Rittich",
+      "pos": "G",
+      "team": "LAK",
+      "draftPoints": 59.9,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8480925",
+      "name": "Pavel Francouz",
+      "pos": "G",
+      "team": "COL",
+      "draftPoints": 59.9,
+      "bestSeason": "20192020"
     },
     {
       "id": "8481611",
@@ -1577,17 +1855,9 @@
       "bestSeason": "20222023"
     },
     {
-      "id": "8476455",
-      "name": "Gabriel Landeskog",
-      "pos": "L",
-      "team": "COL",
-      "draftPoints": 59,
-      "bestSeason": "20212022"
-    },
-    {
       "id": "8477416",
       "name": "Oliver Bjorkstrand",
-      "pos": "R",
+      "pos": "RW",
       "team": "SEA",
       "draftPoints": 59,
       "bestSeason": "20232024"
@@ -1601,17 +1871,25 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8477497",
-      "name": "Sean Monahan",
+      "id": "8476458",
+      "name": "Ryan Strome",
       "pos": "C",
-      "team": "MTL,WPG",
+      "team": "NYR",
       "draftPoints": 59,
-      "bestSeason": "20232024"
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8475197",
+      "name": "Tyson Barrie",
+      "pos": "D",
+      "team": "EDM",
+      "draftPoints": 59,
+      "bestSeason": "20182019"
     },
     {
       "id": "8478042",
       "name": "Viktor Arvidsson",
-      "pos": "L",
+      "pos": "LW",
       "team": "LAK",
       "draftPoints": 59,
       "bestSeason": "20222023"
@@ -1627,23 +1905,15 @@
     {
       "id": "8477407",
       "name": "Anthony Duclair",
-      "pos": "L",
+      "pos": "LW",
       "team": "FLA",
       "draftPoints": 58,
       "bestSeason": "20212022"
     },
     {
-      "id": "8474102",
-      "name": "David Perron",
-      "pos": "L",
-      "team": "STL",
-      "draftPoints": 58,
-      "bestSeason": "20202021"
-    },
-    {
       "id": "8482720",
       "name": "Matthew Knies",
-      "pos": "L",
+      "pos": "LW",
       "team": "TOR",
       "draftPoints": 58,
       "bestSeason": "20242025"
@@ -1651,10 +1921,18 @@
     {
       "id": "8482667",
       "name": "William Eklund",
-      "pos": "L",
+      "pos": "LW",
       "team": "SJS",
       "draftPoints": 58,
       "bestSeason": "20242025"
+    },
+    {
+      "id": "8474889",
+      "name": "Martin Jones",
+      "pos": "G",
+      "team": "TOR",
+      "draftPoints": 57.3,
+      "bestSeason": "20182019"
     },
     {
       "id": "8477932",
@@ -1679,6 +1957,14 @@
       "team": "COL",
       "draftPoints": 57,
       "bestSeason": "20212022"
+    },
+    {
+      "id": "8475768",
+      "name": "Jaden Schwartz",
+      "pos": "LW",
+      "team": "STL",
+      "draftPoints": 57,
+      "bestSeason": "20192020"
     },
     {
       "id": "8482105",
@@ -1721,12 +2007,36 @@
       "bestSeason": "20232024"
     },
     {
+      "id": "8471418",
+      "name": "Anton Khudobin",
+      "pos": "G",
+      "team": "DAL",
+      "draftPoints": 56.7,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8479394",
+      "name": "Carter Hart",
+      "pos": "G",
+      "team": "PHI",
+      "draftPoints": 56.5,
+      "bestSeason": "20192020"
+    },
+    {
       "id": "8479361",
       "name": "Joseph Woll",
       "pos": "G",
       "team": "TOR",
       "draftPoints": 56.5,
       "bestSeason": "20242025"
+    },
+    {
+      "id": "8475156",
+      "name": "Mikko Koskinen",
+      "pos": "G",
+      "team": "EDM",
+      "draftPoints": 56.5,
+      "bestSeason": "20182019"
     },
     {
       "id": "8478007",
@@ -1737,28 +2047,164 @@
       "bestSeason": "20212022"
     },
     {
+      "id": "8475169",
+      "name": "Evander Kane",
+      "pos": "LW",
+      "team": "SJS",
+      "draftPoints": 56,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8474573",
+      "name": "Josh Bailey",
+      "pos": "RW",
+      "team": "NYI",
+      "draftPoints": 56,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8478099",
+      "name": "Kevin Labanc",
+      "pos": "RW",
+      "team": "SJS",
+      "draftPoints": 56,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476288",
+      "name": "Ryan Dzingel",
+      "pos": "C",
+      "team": "CBJ",
+      "draftPoints": 56,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8477968",
       "name": "Alex Nedeljkovic",
       "pos": "G",
-      "team": "CAR",
+      "team": "PIT",
       "draftPoints": 55.4,
       "bestSeason": "20202021"
     },
     {
-      "id": "8473563",
-      "name": "Nicklas Backstrom",
+      "id": "8475763",
+      "name": "Kevin Hayes",
+      "pos": "RW",
+      "team": "WPG",
+      "draftPoints": 55,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8478469",
+      "name": "Thomas Chabot",
+      "pos": "D",
+      "team": "OTT",
+      "draftPoints": 55,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476960",
+      "name": "Andreas Athanasiou",
       "pos": "C",
+      "team": "DET",
+      "draftPoints": 54,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8475191",
+      "name": "Reilly Smith",
+      "pos": "RW",
+      "team": "VGK",
+      "draftPoints": 54,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8471698",
+      "name": "T.J. Oshie",
+      "pos": "RW",
       "team": "WSH",
+      "draftPoints": 54,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8471774",
+      "name": "Alex Stalock",
+      "pos": "G",
+      "team": "CHI",
+      "draftPoints": 53.5,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8477494",
+      "name": "Jonathan Drouin",
+      "pos": "LW",
+      "team": "MTL",
       "draftPoints": 53,
-      "bestSeason": "20202021"
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8468508",
+      "name": "Justin Williams",
+      "pos": "RW",
+      "team": "CAR",
+      "draftPoints": 53,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8475799",
+      "name": "Nino Niederreiter",
+      "pos": "RW",
+      "team": "CAR",
+      "draftPoints": 53,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476479",
+      "name": "Phillip Danault",
+      "pos": "C",
+      "team": "MTL",
+      "draftPoints": 53,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477950",
+      "name": "Tony DeAngelo",
+      "pos": "D",
+      "team": "NYR",
+      "draftPoints": 53,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8476792",
+      "name": "Torey Krug",
+      "pos": "D",
+      "team": "BOS",
+      "draftPoints": 53,
+      "bestSeason": "20182019"
     },
     {
       "id": "8471734",
       "name": "Jonathan Quick",
       "pos": "G",
-      "team": "LAK",
+      "team": "NYR",
       "draftPoints": 52.8,
       "bestSeason": "20212022"
+    },
+    {
+      "id": "8474565",
+      "name": "Alex Pietrangelo",
+      "pos": "D",
+      "team": "STL",
+      "draftPoints": 52,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8477944",
+      "name": "Jakub Vrana",
+      "pos": "LW",
+      "team": "DET",
+      "draftPoints": 52,
+      "bestSeason": "20192020"
     },
     {
       "id": "8476316",
@@ -1788,41 +2234,41 @@
       "id": "8476904",
       "name": "Chris Driedger",
       "pos": "G",
-      "team": "FLA",
+      "team": "SEA",
       "draftPoints": 49.3,
       "bestSeason": "20202021"
     },
     {
-      "id": "8475169",
-      "name": "Evander Kane",
-      "pos": "L",
-      "team": "SJS",
-      "draftPoints": 49,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8476458",
-      "name": "Ryan Strome",
-      "pos": "C",
-      "team": "NYR",
-      "draftPoints": 49,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8475197",
-      "name": "Tyson Barrie",
-      "pos": "D",
-      "team": "EDM",
-      "draftPoints": 48,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8475156",
-      "name": "Mikko Koskinen",
+      "id": "8470147",
+      "name": "Curtis McElhinney",
       "pos": "G",
-      "team": "EDM",
+      "team": "TBL",
+      "draftPoints": 49.3,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8470600",
+      "name": "Ryan Suter",
+      "pos": "D",
+      "team": "MIN",
+      "draftPoints": 48,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8479193",
+      "name": "Casey DeSmith",
+      "pos": "G",
+      "team": "DAL",
       "draftPoints": 47.1,
-      "bestSeason": "20212022"
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8470595",
+      "name": "Eric Staal",
+      "pos": "C",
+      "team": "MIN",
+      "draftPoints": 47,
+      "bestSeason": "20192020"
     },
     {
       "id": "8478872",
@@ -1833,36 +2279,76 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8479394",
-      "name": "Carter Hart",
-      "pos": "G",
-      "team": "PHI",
+      "id": "8477330",
+      "name": "Dominik Kubalik",
+      "pos": "LW",
+      "team": "CHI",
       "draftPoints": 46,
-      "bestSeason": "20222023"
+      "bestSeason": "20192020"
     },
     {
       "id": "8476292",
       "name": "Ondrej Palat",
-      "pos": "L",
+      "pos": "LW",
       "team": "TBL",
       "draftPoints": 46,
       "bestSeason": "20202021"
     },
     {
-      "id": "8475215",
-      "name": "Robin Lehner",
-      "pos": "G",
-      "team": "VGK",
-      "draftPoints": 45.8,
-      "bestSeason": "20212022"
-    },
-    {
       "id": "8476914",
       "name": "Joonas Korpisalo",
       "pos": "G",
-      "team": "CBJ,LAK",
+      "team": "BOS",
+      "draftPoints": 45.8,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8470645",
+      "name": "Corey Crawford",
+      "pos": "G",
+      "team": "CHI",
+      "draftPoints": 45.6,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8470657",
+      "name": "Jimmy Howard",
+      "pos": "G",
+      "team": "DET",
       "draftPoints": 45.3,
-      "bestSeason": "20222023"
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8475151",
+      "name": "Kyle Palmieri",
+      "pos": "C",
+      "team": "NJD",
+      "draftPoints": 45,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8474150",
+      "name": "Mikael Backlund",
+      "pos": "C",
+      "team": "CGY",
+      "draftPoints": 45,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8480145",
+      "name": "Neal Pionk",
+      "pos": "D",
+      "team": "WPG",
+      "draftPoints": 45,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8476871",
+      "name": "Tanner Pearson",
+      "pos": "LW",
+      "team": "VAN",
+      "draftPoints": 45,
+      "bestSeason": "20192020"
     },
     {
       "id": "8477831",
@@ -1876,55 +2362,31 @@
       "id": "8473503",
       "name": "James Reimer",
       "pos": "G",
-      "team": "SJS",
+      "team": "BUF",
       "draftPoints": 44.1,
       "bestSeason": "20212022"
     },
     {
-      "id": "8471276",
-      "name": "David Krejci",
-      "pos": "C",
-      "team": "BOS",
-      "draftPoints": 44,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8479496",
-      "name": "David Rittich",
-      "pos": "G",
-      "team": "LAK",
-      "draftPoints": 43.2,
-      "bestSeason": "20232024"
-    },
-    {
       "id": "8474037",
       "name": "James van Riemsdyk",
-      "pos": "L",
+      "pos": "LW",
       "team": "PHI",
       "draftPoints": 43,
       "bestSeason": "20202021"
     },
     {
-      "id": "8473548",
-      "name": "Phil Kessel",
-      "pos": "R",
-      "team": "UTAH",
-      "draftPoints": 43,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8471698",
-      "name": "T.J. Oshie",
-      "pos": "R",
-      "team": "WSH",
-      "draftPoints": 43,
-      "bestSeason": "20202021"
+      "id": "8474596",
+      "name": "Jake Allen",
+      "pos": "G",
+      "team": "NJD",
+      "draftPoints": 42.7,
+      "bestSeason": "20192020"
     },
     {
       "id": "8481519",
       "name": "Spencer Knight",
       "pos": "G",
-      "team": "FLA",
+      "team": "CHI",
       "draftPoints": 42.5,
       "bestSeason": "20212022"
     },
@@ -1953,12 +2415,12 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8480925",
-      "name": "Pavel Francouz",
+      "id": "8475839",
+      "name": "Louis Domingue",
       "pos": "G",
-      "team": "COL",
+      "team": "NYR",
       "draftPoints": 40.7,
-      "bestSeason": "20212022"
+      "bestSeason": "20182019"
     },
     {
       "id": "8477429",
@@ -1969,33 +2431,17 @@
       "bestSeason": "20202021"
     },
     {
-      "id": "8471695",
-      "name": "Tuukka Rask",
-      "pos": "G",
-      "team": "BOS",
-      "draftPoints": 38.8,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8479193",
-      "name": "Casey DeSmith",
-      "pos": "G",
-      "team": "DAL",
-      "draftPoints": 38.6,
-      "bestSeason": "20242025"
-    },
-    {
-      "id": "8477330",
-      "name": "Dominik Kubalik",
-      "pos": "L",
-      "team": "CHI",
-      "draftPoints": 38,
+      "id": "8478856",
+      "name": "Conor Garland",
+      "pos": "RW",
+      "team": "UTAH",
+      "draftPoints": 39,
       "bestSeason": "20202021"
     },
     {
       "id": "8480797",
       "name": "Joel Farabee",
-      "pos": "L",
+      "pos": "LW",
       "team": "PHI",
       "draftPoints": 38,
       "bestSeason": "20202021"
@@ -2049,28 +2495,12 @@
       "bestSeason": "20202021"
     },
     {
-      "id": "8474884",
-      "name": "Mike Hoffman",
-      "pos": "C",
-      "team": "STL",
-      "draftPoints": 36,
-      "bestSeason": "20202021"
-    },
-    {
       "id": "8476826",
       "name": "Yanni Gourde",
       "pos": "C",
       "team": "TBL",
       "draftPoints": 36,
       "bestSeason": "20202021"
-    },
-    {
-      "id": "8475852",
-      "name": "Petr Mrazek",
-      "pos": "G",
-      "team": "CHI",
-      "draftPoints": 35.5,
-      "bestSeason": "20232024"
     },
     {
       "id": "8475717",
@@ -2081,17 +2511,9 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8474596",
-      "name": "Jake Allen",
-      "pos": "G",
-      "team": "NJD",
-      "draftPoints": 35.4,
-      "bestSeason": "20242025"
-    },
-    {
       "id": "8477015",
       "name": "Connor Brown",
-      "pos": "R",
+      "pos": "RW",
       "team": "OTT",
       "draftPoints": 35,
       "bestSeason": "20202021"
@@ -2105,26 +2527,26 @@
       "bestSeason": "20202021"
     },
     {
+      "id": "8475622",
+      "name": "Carter Hutton",
+      "pos": "G",
+      "team": "BUF",
+      "draftPoints": 33.9,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8477361",
       "name": "Cal Petersen",
       "pos": "G",
-      "team": "LAK",
+      "team": "PHI",
       "draftPoints": 33.7,
       "bestSeason": "20212022"
-    },
-    {
-      "id": "8474889",
-      "name": "Martin Jones",
-      "pos": "G",
-      "team": "SEA",
-      "draftPoints": 33.6,
-      "bestSeason": "20222023"
     },
     {
       "id": "8475809",
       "name": "Scott Wedgewood",
       "pos": "G",
-      "team": "NSH,COL",
+      "team": "COL",
       "draftPoints": 33.5,
       "bestSeason": "20242025"
     },
@@ -2137,12 +2559,52 @@
       "bestSeason": "20232024"
     },
     {
+      "id": "8475195",
+      "name": "Anders Nilsson",
+      "pos": "G",
+      "team": "OTT",
+      "draftPoints": 32.7,
+      "bestSeason": "20182019"
+    },
+    {
       "id": "8478039",
       "name": "Kaapo Kahkonen",
       "pos": "G",
-      "team": "MIN",
+      "team": "COL",
       "draftPoints": 32.4,
       "bestSeason": "20202021"
+    },
+    {
+      "id": "8468685",
+      "name": "Henrik Lundqvist",
+      "pos": "G",
+      "team": "NYR",
+      "draftPoints": 32.1,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8482982",
+      "name": "Jet Greaves",
+      "pos": "G",
+      "team": "CBJ",
+      "draftPoints": 30.8,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8481020",
+      "name": "Justus Annunen",
+      "pos": "G",
+      "team": "NSH",
+      "draftPoints": 30.4,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8482447",
+      "name": "Leevi Meriläinen",
+      "pos": "G",
+      "team": "OTT",
+      "draftPoints": 30.3,
+      "bestSeason": "20242025"
     },
     {
       "id": "8478435",
@@ -2153,6 +2615,22 @@
       "bestSeason": "20212022"
     },
     {
+      "id": "8473541",
+      "name": "Jonathan Bernier",
+      "pos": "G",
+      "team": "NJD",
+      "draftPoints": 29.7,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8470880",
+      "name": "Brian Elliott",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": 29.6,
+      "bestSeason": "20192020"
+    },
+    {
       "id": "8477480",
       "name": "Eric Comrie",
       "pos": "G",
@@ -2161,84 +2639,28 @@
       "bestSeason": "20212022"
     },
     {
-      "id": "8471418",
-      "name": "Anton Khudobin",
+      "id": "8467950",
+      "name": "Craig Anderson",
       "pos": "G",
-      "team": "DAL",
-      "draftPoints": 29.3,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8476434",
-      "name": "John Gibson",
-      "pos": "G",
-      "team": "ANA",
-      "draftPoints": 28.7,
-      "bestSeason": "20212022"
+      "team": "BUF",
+      "draftPoints": 28.3,
+      "bestSeason": "20182019"
     },
     {
       "id": "8481033",
       "name": "Akira Schmid",
       "pos": "G",
-      "team": "NJD",
+      "team": "VGK",
       "draftPoints": 26.6,
       "bestSeason": "20222023"
     },
     {
-      "id": "8470880",
-      "name": "Brian Elliott",
+      "id": "8466141",
+      "name": "Roberto Luongo",
       "pos": "G",
-      "team": "TBL",
-      "draftPoints": 26.6,
-      "bestSeason": "20212022"
-    },
-    {
-      "id": "8476899",
-      "name": "Matt Murray",
-      "pos": "G",
-      "team": "TOR",
-      "draftPoints": 25.7,
-      "bestSeason": "20222023"
-    },
-    {
-      "id": "8471306",
-      "name": "Thomas Greiss",
-      "pos": "G",
-      "team": "DET",
-      "draftPoints": 24.5,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8471469",
-      "name": "Pekka Rinne",
-      "pos": "G",
-      "team": "NSH",
-      "draftPoints": 24.2,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8467950",
-      "name": "Craig Anderson",
-      "pos": "G",
-      "team": "BUF",
-      "draftPoints": 23.7,
-      "bestSeason": "20222023"
-    },
-    {
-      "id": "8471774",
-      "name": "Alex Stalock",
-      "pos": "G",
-      "team": "CHI",
-      "draftPoints": 23,
-      "bestSeason": "20222023"
-    },
-    {
-      "id": "8474651",
-      "name": "Braden Holtby",
-      "pos": "G",
-      "team": "DAL",
-      "draftPoints": 22.9,
-      "bestSeason": "20212022"
+      "team": "FLA",
+      "draftPoints": 25.3,
+      "bestSeason": "20182019"
     },
     {
       "id": "8480051",
@@ -2249,28 +2671,20 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8473541",
-      "name": "Jonathan Bernier",
+      "id": "8477180",
+      "name": "Aaron Dell",
       "pos": "G",
-      "team": "DET",
-      "draftPoints": 22.2,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8470860",
-      "name": "Jaroslav Halak",
-      "pos": "G",
-      "team": "BOS",
-      "draftPoints": 21.6,
-      "bestSeason": "20202021"
-    },
-    {
-      "id": "8471679",
-      "name": "Carey Price",
-      "pos": "G",
-      "team": "MTL",
+      "team": "SJS",
       "draftPoints": 21.4,
-      "bestSeason": "20202021"
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8468011",
+      "name": "Ryan Miller",
+      "pos": "G",
+      "team": "ANA",
+      "draftPoints": 20.7,
+      "bestSeason": "20182019"
     },
     {
       "id": "8482487",
@@ -2281,12 +2695,52 @@
       "bestSeason": "20242025"
     },
     {
+      "id": "8470320",
+      "name": "Cam Ward",
+      "pos": "G",
+      "team": "CHI",
+      "draftPoints": 16.8,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476234",
+      "name": "Keith Kinkaid",
+      "pos": "G",
+      "team": "COL",
+      "draftPoints": 15.9,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477484",
+      "name": "Spencer Martin",
+      "pos": "G",
+      "team": "CAR",
+      "draftPoints": 15.7,
+      "bestSeason": "20212022"
+    },
+    {
       "id": "8480193",
       "name": "Daniil Tarasov",
       "pos": "G",
       "team": "CBJ",
       "draftPoints": 15.3,
       "bestSeason": "20232024"
+    },
+    {
+      "id": "8476343",
+      "name": "Garret Sparks",
+      "pos": "G",
+      "team": "LAK",
+      "draftPoints": 14.4,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476876",
+      "name": "Malcolm Subban",
+      "pos": "G",
+      "team": "CBJ",
+      "draftPoints": 14.2,
+      "bestSeason": "20182019"
     },
     {
       "id": "8477992",
@@ -2297,10 +2751,10 @@
       "bestSeason": "20232024"
     },
     {
-      "id": "8476876",
-      "name": "Malcolm Subban",
+      "id": "8474636",
+      "name": "Michael Hutchinson",
       "pos": "G",
-      "team": "CHI",
+      "team": "DET",
       "draftPoints": 13.4,
       "bestSeason": "20202021"
     },
@@ -2316,7 +2770,7 @@
       "id": "8474682",
       "name": "Dustin Tokarski",
       "pos": "G",
-      "team": "BUF",
+      "team": "CAR",
       "draftPoints": 12.9,
       "bestSeason": "20212022"
     },
@@ -2325,16 +2779,72 @@
       "name": "Nico Daws",
       "pos": "G",
       "team": "NJD",
-      "draftPoints": 9.1,
+      "draftPoints": 12.7,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8480420",
+      "name": "Collin Delia",
+      "pos": "G",
+      "team": "VAN",
+      "draftPoints": 11.5,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8483530",
+      "name": "Jaxson Stauber",
+      "pos": "G",
+      "team": "UTA",
+      "draftPoints": 10.4,
+      "bestSeason": "20222023"
+    },
+    {
+      "id": "8478902",
+      "name": "Erik Kallgren",
+      "pos": "G",
+      "team": "TOR",
+      "draftPoints": 10.2,
       "bestSeason": "20212022"
     },
     {
-      "id": "8481020",
-      "name": "Justus Annunen",
+      "id": "8471239",
+      "name": "Cory Schneider",
       "pos": "G",
-      "team": "COL,NSH",
-      "draftPoints": 6.9,
-      "bestSeason": "20242025"
+      "team": "NYI",
+      "draftPoints": 9.8,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8479294",
+      "name": "Kevin Boyle",
+      "pos": "G",
+      "team": "ANA",
+      "draftPoints": 7.9,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8476509",
+      "name": "Maxime Lagace",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": 7.9,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8483575",
+      "name": "Matt Murray",
+      "pos": "G",
+      "team": "DAL",
+      "draftPoints": 7.3,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8475920",
+      "name": "Michael Houser",
+      "pos": "G",
+      "team": "BUF",
+      "draftPoints": 7.3,
+      "bestSeason": "20212022"
     },
     {
       "id": "8482821",
@@ -2345,12 +2855,52 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8471227",
-      "name": "Devan Dubnyk",
+      "id": "8477457",
+      "name": "Zach Fucale",
       "pos": "G",
-      "team": "SJS,COL",
-      "draftPoints": 5.9,
-      "bestSeason": "20202021"
+      "team": "WSH",
+      "draftPoints": 6.1,
+      "bestSeason": "20212022"
+    },
+    {
+      "id": "8481668",
+      "name": "Arturs Silovs",
+      "pos": "G",
+      "team": "VAN",
+      "draftPoints": 5.8,
+      "bestSeason": "20222023"
+    },
+    {
+      "id": "8482661",
+      "name": "Jesper Wallstedt",
+      "pos": "G",
+      "team": "MIN",
+      "draftPoints": 5.8,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8477405",
+      "name": "Marcus Hogberg",
+      "pos": "G",
+      "team": "NYI",
+      "draftPoints": 5.8,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8480238",
+      "name": "Jiri Patera",
+      "pos": "G",
+      "team": "VGK",
+      "draftPoints": 5.5,
+      "bestSeason": "20222023"
+    },
+    {
+      "id": "8480263",
+      "name": "Dylan Ferguson",
+      "pos": "G",
+      "team": "OTT",
+      "draftPoints": 4.8,
+      "bestSeason": "20222023"
     },
     {
       "id": "8481544",
@@ -2361,52 +2911,476 @@
       "bestSeason": "20222023"
     },
     {
-      "id": "8480420",
-      "name": "Collin Delia",
+      "id": "8481031",
+      "name": "Ivan Prosvetov",
       "pos": "G",
-      "team": "VAN",
-      "draftPoints": 4.4,
-      "bestSeason": "20222023"
+      "team": "COL",
+      "draftPoints": 4.2,
+      "bestSeason": "20232024"
     },
     {
-      "id": "8477484",
-      "name": "Spencer Martin",
+      "id": "8481707",
+      "name": "Erik Portillo",
       "pos": "G",
-      "team": "CBJ,CAR",
-      "draftPoints": 2.4,
+      "team": "LAK",
+      "draftPoints": 3.8,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8475234",
+      "name": "J-F Berube",
+      "pos": "G",
+      "team": "CBJ",
+      "draftPoints": 3.8,
+      "bestSeason": "20212022"
+    },
+    {
+      "id": "8482137",
+      "name": "Yaroslav Askarov",
+      "pos": "G",
+      "team": "SJS",
+      "draftPoints": 3.3,
       "bestSeason": "20232024"
+    },
+    {
+      "id": "8480373",
+      "name": "Josef Korenar",
+      "pos": "G",
+      "team": "SJS",
+      "draftPoints": 3.2,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8477234",
+      "name": "Troy Grosenick",
+      "pos": "G",
+      "team": "LAK",
+      "draftPoints": 3.1,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8480867",
+      "name": "Kevin Mandolese",
+      "pos": "G",
+      "team": "OTT",
+      "draftPoints": 2.9,
+      "bestSeason": "20222023"
     },
     {
       "id": "8476433",
       "name": "Magnus Hellberg",
       "pos": "G",
-      "team": "OTT,DET",
-      "draftPoints": -0.3,
+      "team": "PIT",
+      "draftPoints": 2.9,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8474550",
+      "name": "Antti Niemi",
+      "pos": "G",
+      "team": "MTL",
+      "draftPoints": 2.8,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477035",
+      "name": "Matt Tomkins",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": 2.5,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8479530",
+      "name": "Adam Werner",
+      "pos": "G",
+      "team": "COL",
+      "draftPoints": 2.3,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8482411",
+      "name": "Hunter Shepard",
+      "pos": "G",
+      "team": "WSH",
+      "draftPoints": 2,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8480199",
+      "name": "Eetu Makiniemi",
+      "pos": "G",
+      "team": "SJS",
+      "draftPoints": 1.9,
       "bestSeason": "20222023"
     },
     {
-      "id": "8468011",
-      "name": "Ryan Miller",
+      "id": "8484312",
+      "name": "Georgi Romanov",
       "pos": "G",
-      "team": "ANA",
-      "draftPoints": -4.9,
+      "team": "SJS",
+      "draftPoints": 1.9,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8480191",
+      "name": "Matt Villalta",
+      "pos": "G",
+      "team": "UTA",
+      "draftPoints": 1.8,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8480162",
+      "name": "Matiss Kivlenieks",
+      "pos": "G",
+      "team": "CBJ",
+      "draftPoints": 1.4,
       "bestSeason": "20202021"
+    },
+    {
+      "id": "8484268",
+      "name": "Nikita Tolopilo",
+      "pos": "G",
+      "team": "VAN",
+      "draftPoints": 1.3,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8482657",
+      "name": "Sebastian Cossa",
+      "pos": "G",
+      "team": "DET",
+      "draftPoints": 1.2,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8475277",
+      "name": "Edward Pasquale",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": 1,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8479188",
+      "name": "David Ayres",
+      "pos": "G",
+      "team": "CAR",
+      "draftPoints": 0.8,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8479016",
+      "name": "Landon Bow",
+      "pos": "G",
+      "team": "DAL",
+      "draftPoints": 0.8,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477312",
+      "name": "Antoine Bibeau",
+      "pos": "G",
+      "team": "COL",
+      "draftPoints": 0.7,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8476444",
+      "name": "Christopher Gibson",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": 0.6,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8479313",
+      "name": "Zachary Sawchenko",
+      "pos": "G",
+      "team": "SJS",
+      "draftPoints": 0.6,
+      "bestSeason": "20212022"
+    },
+    {
+      "id": "8476861",
+      "name": "Oscar Dansk",
+      "pos": "G",
+      "team": "VGK",
+      "draftPoints": 0.5,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8479288",
+      "name": "Kasimir Kaskisuo",
+      "pos": "G",
+      "team": "NSH",
+      "draftPoints": 0.3,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8483158",
+      "name": "Matthew Berlin",
+      "pos": "G",
+      "team": "EDM",
+      "draftPoints": 0.1,
+      "bestSeason": "20222023"
+    },
+    {
+      "id": "8484293",
+      "name": "Yaniv Perets",
+      "pos": "G",
+      "team": "CAR",
+      "draftPoints": 0.1,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8480112",
+      "name": "Hunter Miska",
+      "pos": "G",
+      "team": "COL",
+      "draftPoints": -0.2,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8483710",
+      "name": "Dennis Hildeby",
+      "pos": "G",
+      "team": "TOR",
+      "draftPoints": -0.3,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8480213",
+      "name": "Gilles Senn",
+      "pos": "G",
+      "team": "NJD",
+      "draftPoints": -0.3,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8480022",
+      "name": "Michael DiPietro",
+      "pos": "G",
+      "team": "VAN",
+      "draftPoints": -0.4,
+      "bestSeason": "20192020"
+    },
+    {
+      "id": "8481001",
+      "name": "Veini Vehvilainen",
+      "pos": "G",
+      "team": "CBJ",
+      "draftPoints": -0.7,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8482668",
+      "name": "Tristan Lennox",
+      "pos": "G",
+      "team": "NYI",
+      "draftPoints": -0.9,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8478848",
+      "name": "Ales Stezka",
+      "pos": "G",
+      "team": "SEA",
+      "draftPoints": -1,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8481501",
+      "name": "Artyom Zagidulin",
+      "pos": "G",
+      "team": "CGY",
+      "draftPoints": -1.1,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8480363",
+      "name": "Kaden Fulcher",
+      "pos": "G",
+      "team": "DET",
+      "draftPoints": -1.1,
+      "bestSeason": "20182019"
     },
     {
       "id": "8476903",
       "name": "Jon Gillies",
       "pos": "G",
-      "team": "STL,NJD",
-      "draftPoints": -7.2,
+      "team": "CBJ",
+      "draftPoints": -1.3,
+      "bestSeason": "20222023"
+    },
+    {
+      "id": "8478965",
+      "name": "Kenneth Appleby",
+      "pos": "G",
+      "team": "NYI",
+      "draftPoints": -1.4,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8480885",
+      "name": "Olivier Rodrigue",
+      "pos": "G",
+      "team": "EDM",
+      "draftPoints": -1.5,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8480819",
+      "name": "Jakub Skarek",
+      "pos": "G",
+      "team": "NYI",
+      "draftPoints": -1.6,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8483668",
+      "name": "Nikke Kokko",
+      "pos": "G",
+      "team": "SEA",
+      "draftPoints": -1.6,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8483532",
+      "name": "Clay Stevenson",
+      "pos": "G",
+      "team": "WSH",
+      "draftPoints": -1.7,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8482123",
+      "name": "Drew Commesso",
+      "pos": "G",
+      "team": "CHI",
+      "draftPoints": -1.8,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8477202",
+      "name": "Andrew Hammond",
+      "pos": "G",
+      "team": "NJD",
+      "draftPoints": -2.4,
       "bestSeason": "20212022"
+    },
+    {
+      "id": "8474152",
+      "name": "Scott Darling",
+      "pos": "G",
+      "team": "CAR",
+      "draftPoints": -2.4,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8477990",
+      "name": "Brandon Halverson",
+      "pos": "G",
+      "team": "TBL",
+      "draftPoints": -3.1,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8469514",
+      "name": "Peter Budaj",
+      "pos": "G",
+      "team": "LAK",
+      "draftPoints": -3.3,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8474667",
+      "name": "Harri Sateri",
+      "pos": "G",
+      "team": "UTAH",
+      "draftPoints": -3.4,
+      "bestSeason": "20212022"
+    },
+    {
+      "id": "8482446",
+      "name": "Joel Blomqvist",
+      "pos": "G",
+      "team": "PIT",
+      "draftPoints": -3.4,
+      "bestSeason": "20242025"
+    },
+    {
+      "id": "8473614",
+      "name": "Richard Bachman",
+      "pos": "G",
+      "team": "VAN",
+      "draftPoints": -3.7,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8470093",
+      "name": "Mike McKenna",
+      "pos": "G",
+      "team": "PHI",
+      "draftPoints": -3.8,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8482246",
+      "name": "Alexei Melnichuk",
+      "pos": "G",
+      "team": "SJS",
+      "draftPoints": -4,
+      "bestSeason": "20202021"
+    },
+    {
+      "id": "8482445",
+      "name": "Devin Cooley",
+      "pos": "G",
+      "team": "SJS",
+      "draftPoints": -4.3,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8477237",
+      "name": "Mike Condon",
+      "pos": "G",
+      "team": "OTT",
+      "draftPoints": -4.8,
+      "bestSeason": "20182019"
     },
     {
       "id": "8478905",
       "name": "Ivan Fedotov",
       "pos": "G",
       "team": "PHI",
-      "draftPoints": -8.1,
-      "bestSeason": "20242025"
+      "draftPoints": -5.7,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8473434",
+      "name": "Chad Johnson",
+      "pos": "G",
+      "team": "ANA",
+      "draftPoints": -6.3,
+      "bestSeason": "20182019"
+    },
+    {
+      "id": "8478433",
+      "name": "Felix Sandstrom",
+      "pos": "G",
+      "team": "PHI",
+      "draftPoints": -7.1,
+      "bestSeason": "20232024"
+    },
+    {
+      "id": "8473607",
+      "name": "Michal Neuvirth",
+      "pos": "G",
+      "team": "PHI",
+      "draftPoints": -8.2,
+      "bestSeason": "20182019"
     },
     {
       "id": "8482783",
@@ -2417,20 +3391,12 @@
       "bestSeason": "20242025"
     },
     {
-      "id": "8474636",
-      "name": "Michael Hutchinson",
+      "id": "8480992",
+      "name": "Magnus Chrona",
       "pos": "G",
-      "team": "CBJ",
-      "draftPoints": -12.1,
-      "bestSeason": "20222023"
-    },
-    {
-      "id": "8478433",
-      "name": "Felix Sandstrom",
-      "pos": "G",
-      "team": "PHI",
-      "draftPoints": -12.4,
-      "bestSeason": "20222023"
+      "team": "SJS",
+      "draftPoints": -12.5,
+      "bestSeason": "20232024"
     }
   ]
 }
