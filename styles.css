@@ -119,15 +119,6 @@ body{
   outline: none;
 }
 .input{ width: 260px; }
-.mini{
-  margin-left:auto;
-  padding: 10px 12px;
-  border:1px solid var(--stroke);
-  border-radius: 12px;
-  background: rgba(0,0,0,.14);
-}
-.mini-label{ color: var(--muted2); font-weight: 700; font-size: 12px; }
-.mini-value{ font-weight: 800; }
 
 .table-wrap{
   overflow:auto;
@@ -206,7 +197,3 @@ tbody tr.illegal:hover{ background: transparent; }
 }
 
 .pts-col{ display:none; }
-
-.footer{ margin-top: 14px; padding: 10px 2px; }
-
-.data-label { display: none !important; }
