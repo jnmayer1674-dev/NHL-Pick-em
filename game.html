@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NHL Pick’em by MayerBros</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="mode-select">
+
+<body class="modeSelectPage">
   <div class="page">
     <div class="card headerCard">
       <div class="headerLeft">
@@ -22,11 +23,13 @@
 
     <div class="card modalCard">
       <div class="modalTitle">Choose a game mode to begin</div>
+
       <div class="modalButtons">
-        <a class="btn btnPrimary" href="game.html?mode=single">Single Player</a>
-        <a class="btn btnPrimary" href="game.html?mode=two">Versus Mode</a>
+        <a class="btnLink" href="game.html?mode=single">Single Player</a>
+        <a class="btnLink secondary" href="game.html?mode=two">Versus Mode</a>
       </div>
-      <div class="modalFoot">FLEX accepts C/LW/RW only</div>
+
+      <div class="modalHint">FLEX accepts C/LW/RW only</div>
     </div>
   </div>
 </body>
