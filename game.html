@@ -9,8 +9,20 @@
 <body>
   <div class="page">
     <header class="hero">
-      <div class="hero__title">NHL Pick’em by MayerBros</div>
-      <div class="hero__subtitle">Draft by team</div>
+      <div class="heroLeft">
+        <div class="hero__title">NHL Pick’em by MayerBros</div>
+        <div class="hero__subtitle">Draft by team</div>
+      </div>
+
+      <!-- QR lives here (auto-hidden if no URL set in app.js) -->
+      <div class="heroRight">
+        <div id="qrWrap" class="qrWrap hidden">
+          <img id="qrImg" class="qrImg" alt="QR code" />
+          <div class="qrText">
+            Scan to open<br/>on phone/iPad
+          </div>
+        </div>
+      </div>
     </header>
 
     <section class="topbar card">
@@ -96,7 +108,6 @@
         <div class="rostersHeader">
           <div class="card__title">Rosters</div>
 
-          <!-- Single-player ONLY -->
           <div id="singleExtras" class="singleExtras hidden">
             <div class="hsLine">
               <div><span class="muted">High Score:</span> <span id="highScore">0.0</span></div>
@@ -114,7 +125,6 @@
     </main>
   </div>
 
-  <!-- IMPORTANT: load JS from same folder -->
   <script src="./app.js"></script>
 </body>
 </html>
