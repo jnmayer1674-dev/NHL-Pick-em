@@ -6,8 +6,11 @@
   --muted2:rgba(255,255,255,.55);
   --shadow: 0 10px 30px rgba(0,0,0,.35);
   --radius:18px;
+  --highlight: rgba(60,120,255,.2);
 }
+
 *{ box-sizing:border-box; }
+
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -16,6 +19,7 @@ body{
               var(--bg);
   color: var(--text);
 }
+
 .page{ max-width: 1220px; margin: 0 auto; padding: 26px 18px 40px; }
 
 .hidden{ display:none !important; }
@@ -27,6 +31,7 @@ body{
   background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   box-shadow: var(--shadow);
 }
+
 .title{ margin:0; font-size: 48px; letter-spacing: -0.02em; }
 .subtitle{ margin-top:6px; color: var(--muted); }
 
@@ -38,6 +43,7 @@ body{
   box-shadow: var(--shadow);
   padding: 14px 14px 16px;
 }
+
 .card-head{ margin-bottom: 10px; }
 .card-title{ margin:0; font-size: 30px; letter-spacing:-.02em; }
 .hint{ color: var(--muted); margin-top: 6px; }
@@ -73,6 +79,7 @@ body{
   flex-wrap: wrap;
   align-items: center;
 }
+
 .status-line{ margin: 2px 0; font-weight: 700; }
 .subtle{ color: var(--muted2); font-weight: 500; }
 
@@ -83,6 +90,7 @@ body{
   border-radius: 999px;
   background: rgba(255,255,255,.03);
 }
+
 .team-logo{
   width: 44px; height: 44px; object-fit: contain;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
@@ -119,15 +127,6 @@ body{
   outline: none;
 }
 .input{ width: 260px; }
-.mini{
-  margin-left:auto;
-  padding: 10px 12px;
-  border:1px solid var(--stroke);
-  border-radius: 12px;
-  background: rgba(0,0,0,.14);
-}
-.mini-label{ color: var(--muted2); font-weight: 700; font-size: 12px; }
-.mini-value{ font-weight: 800; }
 
 .table-wrap{
   overflow:auto;
@@ -199,15 +198,28 @@ tbody tr.illegal:hover{ background: transparent; }
   background: rgba(160,255,200,.08);
 }
 
-/* HIGH SCORE STYLE */
-.high-score {
-  font-size: 0.85rem;
+/* HIGH SCORE CARD STYLING */
+.high-score-card{
+  border: 2px solid rgba(120,170,255,.5);
+  background: rgba(60,120,255,.15);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 900;
   color: #9fd3ff;
-  opacity: 0.85;
-  margin-top: 2px;
-  display: block;
+  margin-top: 12px;
+  box-shadow: var(--shadow);
 }
 
+.high-score {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #9fd3ff;
+  opacity: 0.9;
+}
+
+/* Blind mode: hide PTS column completely */
 .pts-col{ display:none; }
 
 .footer{ margin-top: 14px; padding: 10px 2px; }
