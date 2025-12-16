@@ -78,6 +78,7 @@
               Search:
               <input id="searchInput" class="input" type="text" placeholder="type a name..." />
             </label>
+
           </div>
 
           <div class="table-wrap">
@@ -95,26 +96,25 @@
           </div>
 
           <div id="emptyMsg" class="empty hidden">
-            No players loaded yet. (If you opened file:/// locally, use Netlify.)
+            No players loaded yet. Make sure players.json is in the data folder.
           </div>
         </section>
 
         <section class="card">
           <div class="card-head">
             <h2 class="card-title">Rosters</h2>
-            <div id="winnerLine" class="hint"></div>
           </div>
 
           <div id="rostersOne" class="rosters hidden">
             <div class="roster">
               <div class="roster-head">
                 <div class="roster-title">Player 1</div>
-                <div id="p1Score" class="roster-score">
-                  Score: 0<br />
-                  <span id="singleHighScore" class="high-score">High Score: 0</span>
+                <div class="roster-score">
+                  <span id="p1Score">Score: 0</span><br/>
+                  <span id="singleHighScore" class="high-score">High Score: 0</span><br/>
+                  <button id="resetHighScore" class="btn btn-primary mini">Reset High Score</button>
                 </div>
               </div>
-              <button id="resetHighScore" class="btn btn-primary" type="button">Reset High Score</button>
               <div id="p1Slots" class="slots"></div>
             </div>
           </div>
@@ -143,7 +143,6 @@
         </section>
 
       </main>
-
     </section>
 
   </div>
