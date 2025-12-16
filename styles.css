@@ -199,16 +199,17 @@ tbody tr.illegal:hover{ background: transparent; }
   background: rgba(160,255,200,.08);
 }
 
+/* HIGH SCORE STYLE */
 .high-score {
   font-size: 0.85rem;
   color: #9fd3ff;
   opacity: 0.85;
+  margin-top: 2px;
+  display: block;
 }
 
-/* Blind mode: hide PTS column completely */
 .pts-col{ display:none; }
 
 .footer{ margin-top: 14px; padding: 10px 2px; }
 
 .data-label { display: none !important; }
-
