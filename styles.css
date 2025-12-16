@@ -87,12 +87,16 @@ body{
   border: 1px solid var(--border);
   background: rgba(255,255,255,.05);
 }
+
+/* ✅ QR code 1.5x larger but stays inside box */
 .qrImg{
-  width: 48px; height: 48px;
+  width: 72px;   /* was 48 */
+  height: 72px;  /* was 48 */
   border-radius: 10px;
   background: rgba(255,255,255,.06);
   object-fit: cover;
 }
+
 .qrText{ font-size: 12px; color: var(--muted); font-weight: 800; line-height: 1.2; }
 
 .card{
@@ -250,6 +254,14 @@ select,input{
 .slotTeam{ color: var(--muted); font-weight: 900; text-align:center; }
 .slotState{ text-align:right; font-weight: 900; color: var(--muted); }
 .slot.open .slotState{ color: rgba(120,255,190,.85); }
+
+/* ✅ roster slot click affordance + selected highlight */
+.slot.selectable{ cursor: pointer; }
+.slot.selectable:hover{ background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.16); }
+.slot.selected{
+  border-color: rgba(120,255,190,.55);
+  box-shadow: 0 0 0 2px rgba(120,255,190,.18) inset;
+}
 
 .slotsLine{
   margin-top: 12px;
