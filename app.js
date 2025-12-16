@@ -455,8 +455,6 @@ async function loadPlayers(){
   const raw = Array.isArray(json.players) ? json.players : [];
   if(!raw.length) throw new Error("players.json loaded but has no players.");
 
-  el.dataStamp.textContent = meta.generatedAt ? `${meta.generatedAt}` : "loaded";
-
   return raw.map((p, i) => ({
     id: p.id ?? `${p.name}-${i}`,
     name: p.name ?? "",
@@ -490,4 +488,5 @@ function hookUI(){
     el.emptyMsg.classList.remove("hidden");
   }
 })();
+
 
