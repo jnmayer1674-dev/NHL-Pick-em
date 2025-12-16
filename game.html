@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NHL Pick’em by MayerBros</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="modeSelectPage">
+<body>
+  <div class="bg"></div>
+
   <div class="page">
     <div class="card headerCard">
       <div class="headerLeft">
@@ -15,22 +17,114 @@
         <div class="subtitle">Draft by team</div>
       </div>
 
-      <div class="qrBox">
+      <div class="qrBox" aria-label="QR code to open site">
         <img class="qrImg" src="assets/qr.png" alt="QR code">
         <div class="qrText">Scan to open<br>on phone or tablet</div>
       </div>
     </div>
 
-    <div class="card modalCard">
-      <div class="modalTitle">Choose a game mode to begin</div>
-
-      <div class="modalButtons">
-        <a class="btnLink" href="game.html?mode=single">Single Player</a>
-        <a class="btnLink secondary" href="game.html?mode=two">Versus Mode</a>
+    <div class="card statusCard">
+      <div class="statusLeft">
+        <div class="statusLine1" id="statusLine1">Loading…</div>
+        <div class="statusLine2" id="statusLine2"></div>
       </div>
 
-      <div class="modalHint">FLEX accepts C/LW/RW only</div>
+      <div class="statusRight">
+        <button class="btn" id="btnChangeMode" type="button">Change Mode</button>
+        <button class="btn primary" id="btnNewGame" type="button">New Game</button>
+
+        <div class="teamPill" id="teamPill" title="Current team">
+          <img class="teamLogo" id="teamLogo" alt="" />
+          <div class="teamMeta">
+            <div class="teamAbbr" id="teamAbbr">—</div>
+            <div class="timer" id="timer">30s</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mainGrid">
+      <!-- LEFT: Players -->
+      <div class="card playersCard">
+        <div class="cardTitleRow">
+          <div>
+            <div class="cardTitle">2024–2025 Fantasy Points</div>
+            <div class="cardSub">
+              Draft options: (A) Choose Draft Position then click a player, or (B) leave Draft Position = AUTO and click a player to auto-fill.
+            </div>
+          </div>
+          <div class="dataStamp" id="dataStamp">Data: —</div>
+        </div>
+
+        <div class="controlsRow">
+          <div class="control">
+            <label class="label" for="draftPos">Draft Position:</label>
+            <select id="draftPos" class="select">
+              <option value="AUTO">AUTO</option>
+              <option value="C">C</option>
+              <option value="LW">LW</option>
+              <option value="RW">RW</option>
+              <option value="D">D</option>
+              <option value="G">G</option>
+              <option value="FLEX">FLEX</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label class="label" for="showPos">Show Position:</label>
+            <select id="showPos" class="select">
+              <option value="ALL">All</option>
+              <option value="C">C</option>
+              <option value="LW">LW</option>
+              <option value="RW">RW</option>
+              <option value="D">D</option>
+              <option value="G">G</option>
+              <option value="FLEX">FLEX (C/LW/RW)</option>
+            </select>
+          </div>
+
+          <div class="control grow">
+            <label class="label" for="search">Search:</label>
+            <input id="search" class="input" placeholder="type a name…" />
+          </div>
+        </div>
+
+        <div class="tableWrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="th left">PLAYER</th>
+                <th class="th">POS</th>
+                <th class="th">TEAM</th>
+                <th class="th right">PTS</th>
+              </tr>
+            </thead>
+            <tbody id="playersTbody">
+              <tr><td class="td left" colspan="4">Loading players…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="errorBox hidden" id="errorBox"></div>
+      </div>
+
+      <!-- RIGHT: Rosters -->
+      <div class="card rostersCard">
+        <div class="rostersHeader">
+          <div class="cardTitle">Rosters</div>
+          <div class="rostersMeta" id="rostersMeta"></div>
+          <button class="btn tiny" id="btnResetHigh" type="button">Reset High Score</button>
+        </div>
+
+        <div id="rostersContainer"></div>
+
+        <div class="slotsHint">
+          Slots: C, LW, RW, D, D, G, FLEX, FLEX — <b>FLEX accepts C/LW/RW only.</b>
+        </div>
+      </div>
     </div>
   </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
