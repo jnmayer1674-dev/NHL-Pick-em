@@ -295,3 +295,19 @@ body{
   .players-list{max-height: 420px}
   .mode-grid{grid-template-columns: 1fr}
 }
+/* Nicer HOME button */
+.homebtn{
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.16);
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+.homebtn:hover{
+  background: rgba(255,255,255,.10);
+}
+
+/* Timer pill emphasis */
+.timerpill{
+  border-color: rgba(255,255,255,.20);
+}
