@@ -46,6 +46,9 @@
     resetVsBtn: document.getElementById("resetVsBtn"),
     winnerTitle: document.getElementById("winnerTitle"),
     vsTeamMini: document.getElementById("vsTeamMini"),
+    // NEW totals
+    p1Total: document.getElementById("p1Total"),
+    p2Total: document.getElementById("p2Total"),
   } : null;
 
   let allPlayers = [];
@@ -177,6 +180,9 @@
     const round = Math.ceil(pickNo / 2);
     const firstInRound = pickNo % 2 === 1;
 
+    // Snake within each team-round of 2 picks:
+    // Round 1: P1 then P2
+    // Round 2: P2 then P1
     const p1Turn = (round % 2 === 1) ? firstInRound : !firstInRound;
     return p1Turn ? vRoster1 : vRoster2;
   }
@@ -186,9 +192,10 @@
     return currentPickerRoster() === vRoster1 ? "Player 1" : "Player 2";
   }
 
+  // Reroll after BOTH players have picked from the same team (every 2 picks)
   function shouldRerollTeamAfterPick() {
     if (mode === "single") return true;
-    return (vPickIndex % 2 === 0); // after pick 2,4,6.. (end of round)
+    return (vPickIndex % 2 === 0); // after pick 2,4,6.. (end of 2-pick team round)
   }
 
   function playerCanFillAnyOpenSlot(player, roster) {
@@ -282,6 +289,16 @@
     }
   }
 
+  function sumRosterPoints(roster) {
+    return roster.filter(Boolean).reduce((acc, p) => acc + playerPoints(p), 0);
+  }
+
+  function updateVsTotalsUI() {
+    if (mode !== "vs" || !vs) return;
+    if (vs.p1Total) vs.p1Total.textContent = String(Math.round(sumRosterPoints(vRoster1)));
+    if (vs.p2Total) vs.p2Total.textContent = String(Math.round(sumRosterPoints(vRoster2)));
+  }
+
   function updateHeaderLines() {
     if (mode === "single") {
       els.roundPickLine.textContent =
@@ -299,6 +316,7 @@
       vs.onClock.textContent = onClockLabel();
       vs.p1Filled.textContent = String(vRoster1.filter(Boolean).length);
       vs.p2Filled.textContent = String(vRoster2.filter(Boolean).length);
+      updateVsTotalsUI();
     }
   }
 
@@ -361,7 +379,9 @@
     setTimerUI();
 
     if (isDraftOver()) return;
-    if (!els.endModal?.classList.contains("hidden")) return;
+
+    // Safety: if modal is open, do not run
+    if (els.endModal && !els.endModal.classList.contains("hidden")) return;
 
     clockInterval = setInterval(() => {
       secondsLeft--;
@@ -388,6 +408,7 @@
 
     let chosenPlayer = null;
 
+    // Autodraft: best eligible by slot order (main slots before FLEX)
     for (let i = 0; i < SLOT_ORDER.length; i++) {
       if (roster[i]) continue;
       const slot = SLOT_ORDER[i];
@@ -418,6 +439,9 @@
   }
 
   function draftPlayer(player, { isAuto }) {
+    // If a modal is visible, block drafting
+    if (els.endModal && !els.endModal.classList.contains("hidden")) return;
+
     const roster = currentPickerRoster();
     const id = playerId(player);
     if (draftedIds.has(id)) return;
@@ -453,6 +477,8 @@
       vPickIndex++;
 
       resetFiltersAfterPick();
+
+      // IMPORTANT: reroll after BOTH picks from the same team (every 2 picks)
       if (vPickIndex < 16 && shouldRerollTeamAfterPick()) {
         rerollTeamForRoster(currentPickerRoster());
       }
@@ -468,9 +494,8 @@
     }
 
     if (mode === "vs" && vPickIndex >= 16) {
-      const sum = (r) => r.filter(Boolean).reduce((a,p)=>a+playerPoints(p),0);
-      const p1 = Math.round(sum(vRoster1));
-      const p2 = Math.round(sum(vRoster2));
+      const p1 = Math.round(sumRosterPoints(vRoster1));
+      const p2 = Math.round(sumRosterPoints(vRoster2));
 
       if (p1 > p2) vs.winnerTitle.textContent = "PLAYER 1 WINS";
       else if (p2 > p1) vs.winnerTitle.textContent = "PLAYER 2 WINS";
@@ -506,6 +531,9 @@
 
     // ✅ remove “Loaded 600 players…” everywhere
     if (els.dataStatus) els.dataStatus.textContent = "";
+
+    // Safety: never show end modal just because of weird prior state
+    if (els.endModal) els.endModal.classList.add("hidden");
   }
 
   function resetSingle(keepHigh=true) {
@@ -522,7 +550,7 @@
     rerollTeamForRoster(sRoster);
     renderAll();
 
-    els.endModal.classList.add("hidden");
+    if (els.endModal) els.endModal.classList.add("hidden");
     startClockForPick();
   }
 
@@ -538,7 +566,7 @@
     rerollTeamForRoster(currentPickerRoster());
     renderAll();
 
-    els.endModal.classList.add("hidden");
+    if (els.endModal) els.endModal.classList.add("hidden");
     startClockForPick();
   }
 
@@ -573,13 +601,17 @@
 
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) stopClock();
-      else if (!isDraftOver() && els.endModal.classList.contains("hidden")) startClockForPick();
+      else if (!isDraftOver() && els.endModal && els.endModal.classList.contains("hidden")) startClockForPick();
     });
   }
 
   (async function init(){
     wire();
     updateFilterLabel();
+
+    // Hard safety: ensure modal is hidden at startup
+    if (els.endModal) els.endModal.classList.add("hidden");
+
     await loadPlayers();
 
     teamBag = makeTeamBag();
