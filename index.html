@@ -11,14 +11,17 @@
     <header class="topbar">
       <div class="brand">
         <div class="brand__title">NHL Pickem</div>
-        <div class="brand__subtitle">by MayerBros</div>
+        <div class="brand__subtitleRow">
+          <div class="brand__subtitle">by MayerBros</div>
+          <img class="qr" src="./assets/qr.png" alt="QR code" />
+        </div>
       </div>
     </header>
 
     <main class="home">
       <div class="card homeCard">
         <h1>Choose a game mode</h1>
-        <p class="muted">Blinded draft. Click any player to auto-fill your next valid roster slot.</p>
+        <p class="muted">Blinded draft. Fantasy points stay hidden.</p>
 
         <div class="homeButtons">
           <a class="btn primary" href="./game.html?mode=single">Single Player</a>
@@ -31,10 +34,6 @@
         </div>
       </div>
     </main>
-
-    <footer class="footer muted">
-      Data loads from <code>./data/players.json</code>
-    </footer>
   </div>
 </body>
 </html>
