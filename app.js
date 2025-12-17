@@ -377,7 +377,6 @@
     secondsLeft = CLOCK_SECONDS;
     setTimerUI();
 
-    // Don’t run if draft finished or modal open
     if (isDraftOver()) return;
     if (!els.endModal?.classList.contains("hidden")) return;
 
@@ -406,9 +405,9 @@
     const roster = currentPickerRoster();
     const pool = availablePlayersForCurrentTeam();
 
-    // Find next open slot in roster order, then best player for it (by points)
     let chosenPlayer = null;
 
+    // Find next open slot in order, pick best by points for that slot
     for (let i = 0; i < SLOT_ORDER.length; i++) {
       if (roster[i]) continue;
       const slot = SLOT_ORDER[i];
@@ -424,7 +423,7 @@
       break;
     }
 
-    // If somehow none fit (shouldn't happen), pick ANY player that can fill any open slot
+    // Fallback: best player who fits ANY open slot
     if (!chosenPlayer) {
       const any = pool
         .filter(p => !draftedIds.has(playerId(p)))
@@ -438,7 +437,6 @@
     if (chosenPlayer) {
       draftPlayer(chosenPlayer, { isAuto: true });
     } else {
-      // nothing to draft; just stop timer
       stopClock();
     }
   }
@@ -465,7 +463,6 @@
     roster[placeIndex] = player;
     draftedIds.add(id);
 
-    // scoring
     if (mode === "single") {
       sScore += playerPoints(player);
       sPickIndex++;
@@ -475,13 +472,11 @@
         saveHighScore(highScore);
       }
 
-      // ✅ single: reroll team after every pick (if not over)
       resetFiltersAfterPick();
       if (sPickIndex < 8) rerollTeamForRoster(sRoster);
     } else {
       vPickIndex++;
 
-      // ✅ vs: reroll team ONLY after both picks in the round
       resetFiltersAfterPick();
       if (vPickIndex < 16 && shouldRerollTeamAfterPick()) {
         rerollTeamForRoster(currentPickerRoster());
@@ -490,7 +485,7 @@
 
     renderAll();
 
-    // end
+    // ✅ end states
     if (mode === "single" && sPickIndex >= 8) {
       els.endSummary.textContent = `Final Score: ${Math.round(sScore)} • High Score: ${Math.round(highScore)}`;
       els.endModal.classList.remove("hidden");
@@ -500,17 +495,21 @@
 
     if (mode === "vs" && vPickIndex >= 16) {
       const sum = (r) => r.filter(Boolean).reduce((a,p)=>a+playerPoints(p),0);
-      const p1 = sum(vRoster1), p2 = sum(vRoster2);
+      const p1 = Math.round(sum(vRoster1));
+      const p2 = Math.round(sum(vRoster2));
+
       if (p1 > p2) vs.winnerTitle.textContent = "PLAYER 1 WINS";
       else if (p2 > p1) vs.winnerTitle.textContent = "PLAYER 2 WINS";
       else vs.winnerTitle.textContent = "TIE";
-      els.endSummary.textContent = "Draft complete.";
+
+      // ✅ show winning score on winner screen
+      els.endSummary.textContent = `Final Score — Player 1: ${p1} • Player 2: ${p2}`;
+
       els.endModal.classList.remove("hidden");
       stopClock();
       return;
     }
 
-    // start next pick timer
     startClockForPick();
   }
 
