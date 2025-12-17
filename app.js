@@ -1,354 +1,217 @@
-// NHL Pickem by MayerBros — One-page game.html
-// Modes:
-//   game.html?mode=single
-//   game.html?mode=vs
-//
-// FIXES INCLUDED:
-// - Click any player anytime (no roster-slot preselect)
-// - Auto-fills next valid slot
-// - FLEX accepts C/LW/RW only
-// - VS mode: snake draft
-// - Points hidden (blinded)
-// - No date/data labels
+/****************************************************
+ NHL PICK ’EM by MayerBros
+ ONE PAGE GAME (game.html)
+
+ ✔ Works with data/players.json shaped as:
+   {
+     meta: {...},
+     players: [ {...}, {...} ]
+   }
+
+ ✔ Click any player anytime
+ ✔ Auto-fills next valid slot
+ ✔ FLEX = C / LW / RW only
+ ✔ Single mode + VS snake draft
+ ✔ Points hidden (blinded)
+****************************************************/
+
+/* =========================
+   CONFIG
+========================= */
 
 const SLOTS = ["C","LW","RW","D","D","G","FLEX","FLEX"];
 const FLEX_ALLOWED = new Set(["C","LW","RW"]);
 
-const $ = (sel) => document.querySelector(sel);
+const $ = (q) => document.querySelector(q);
+
+/* =========================
+   UTILITIES
+========================= */
 
 function getMode() {
   const m = new URLSearchParams(window.location.search).get("mode");
-  return (m === "vs" || m === "single") ? m : "single";
+  return m === "vs" ? "vs" : "single";
 }
 
-function normalizePosString(posRaw) {
-  if (!posRaw) return new Set();
-  const s = String(posRaw).toUpperCase().replace(/\s+/g, "");
-  const cleaned = s
-    .replace("LEFTWING", "LW")
-    .replace("RIGHTWING", "RW")
-    .replace("CENTER", "C")
-    .replace("DEFENSE", "D")
-    .replace("DEFENCEMAN", "D")
-    .replace("GOALIE", "G");
-  const parts = cleaned.split(/[\/,|]/).filter(Boolean);
-  return new Set(parts);
+function normalizePos(pos) {
+  if (!pos) return new Set();
+  return new Set(
+    pos.toUpperCase()
+       .replace("CENTER","C")
+       .replace("LEFTWING","LW")
+       .replace("RIGHTWING","RW")
+       .replace("DEFENSE","D")
+       .replace("DEFENCEMAN","D")
+       .replace("GOALIE","G")
+       .split(/[\/,|]/)
+  );
 }
 
-function slotAccepts(slot, playerPosSet) {
+function slotAccepts(slot, posSet) {
   if (slot === "FLEX") {
-    for (const p of playerPosSet) if (FLEX_ALLOWED.has(p)) return true;
-    return false;
+    return [...posSet].some(p => FLEX_ALLOWED.has(p));
   }
-  return playerPosSet.has(slot);
+  return posSet.has(slot);
 }
 
-function nextValidSlotIndex(rosterArr, playerPosSet) {
-  // Prefer exact slots first, then FLEX (avoid wasting FLEX early)
-  const exactOrder = ["C","LW","RW","D","D","G"];
-  const flexOrder = ["FLEX","FLEX"];
-
-  for (let i = 0; i < rosterArr.length; i++) {
-    const slot = rosterArr[i].slot;
-    if (!rosterArr[i].player && exactOrder.includes(slot) && slotAccepts(slot, playerPosSet)) return i;
+function nextSlotIndex(roster, posSet) {
+  // Exact slots first
+  for (let i = 0; i < roster.length; i++) {
+    if (!roster[i].player && roster[i].slot !== "FLEX" && slotAccepts(roster[i].slot, posSet)) {
+      return i;
+    }
   }
-  for (let i = 0; i < rosterArr.length; i++) {
-    const slot = rosterArr[i].slot;
-    if (!rosterArr[i].player && flexOrder.includes(slot) && slotAccepts(slot, playerPosSet)) return i;
+  // Then FLEX
+  for (let i = 0; i < roster.length; i++) {
+    if (!roster[i].player && roster[i].slot === "FLEX" && slotAccepts("FLEX", posSet)) {
+      return i;
+    }
   }
   return -1;
 }
 
-function buildEmptyRoster() {
-  return SLOTS.map((slot) => ({ slot, player: null }));
+function emptyRoster() {
+  return SLOTS.map(s => ({ slot: s, player: null }));
 }
-function rosterFilledCount(roster) { return roster.filter(s => !!s.player).length; }
-function allRosterFilled(roster) { return rosterFilledCount(roster) === roster.length; }
 
-function renderRoster(container, roster) {
-  container.innerHTML = "";
-  roster.forEach((s) => {
-    const div = document.createElement("div");
-    div.className = "slot";
-    const name = s.player ? s.player.name : "—";
-    const meta = s.player ? `${s.player.team} • ${s.player.pos}` : "";
-    div.innerHTML = `
-      <div class="slot__pos">${s.slot}</div>
-      <div class="slot__name" title="${name}">${name}</div>
-      <div class="slot__meta">${meta}</div>
+function renderRoster(el, roster) {
+  el.innerHTML = "";
+  roster.forEach(r => {
+    el.innerHTML += `
+      <div class="slot">
+        <div class="slot__pos">${r.slot}</div>
+        <div class="slot__name">${r.player ? r.player.name : "—"}</div>
+        <div class="slot__meta">${r.player ? `${r.player.team} • ${r.player.pos}` : ""}</div>
+      </div>
     `;
-    container.appendChild(div);
   });
 }
 
-function renderPlayersList(container, players, onClick) {
-  container.innerHTML = "";
-  players.forEach((p) => {
+function renderPlayers(el, players, onPick) {
+  el.innerHTML = "";
+  players.forEach(p => {
     const row = document.createElement("div");
     row.className = "playerRow";
     row.innerHTML = `
       <div class="playerLeft">
-        <div class="playerName" title="${p.name}">${p.name}</div>
-        <div class="playerSub" title="${p.team} • ${p.pos}">${p.team} • ${p.pos}</div>
+        <div class="playerName">${p.name}</div>
+        <div class="playerSub">${p.team} • ${p.pos}</div>
       </div>
       <div class="playerTag">Draft</div>
     `;
-    row.addEventListener("click", () => onClick(p));
-    container.appendChild(row);
+    row.onclick = () => onPick(p);
+    el.appendChild(row);
   });
 }
 
-function uniqTeams(players) {
-  const set = new Set();
-  players.forEach(p => { if (p.team) set.add(p.team); });
-  return Array.from(set).sort((a,b)=>a.localeCompare(b));
-}
-function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+/* =========================
+   LOAD DATA (MATCHES YOUR JSON)
+========================= */
 
 async function loadPlayers() {
   const res = await fetch("./data/players.json", { cache: "no-store" });
-  if (!res.ok) throw new Error("Could not load ./data/players.json");
-  const data = await res.json();
-  if (!Array.isArray(data)) throw new Error("players.json must be an array");
-  return data
-    .filter(p => p && (p.name || p.player || p.fullName))
-    .map((p, idx) => ({
-      id: p.id ?? p.playerId ?? idx,
-      name: p.name ?? p.player ?? p.fullName ?? "Unknown",
-      team: p.team ?? p.nhlTeam ?? p.club ?? "—",
-      pos: (p.pos ?? p.position ?? p.positions ?? "—").toString().toUpperCase()
-    }));
-}
-function removeDrafted(players, draftedIds) {
-  const set = new Set(draftedIds);
-  return players.filter(p => !set.has(p.id));
+  if (!res.ok) throw new Error("Failed to load players.json");
+
+  const json = await res.json();
+  if (!Array.isArray(json.players)) {
+    throw new Error("players.json.players must be an array");
+  }
+
+  return json.players.map(p => ({
+    id: p.id,
+    name: p.name,
+    team: p.team,
+    pos: p.pos
+  }));
 }
 
 /* =========================
-   SINGLE MODE
+   SINGLE PLAYER MODE
 ========================= */
-function initSingle(players) {
-  // show single UI
+
+function runSingle(players) {
   $("#layoutSingle").classList.remove("hidden");
   $("#teamBanner").classList.remove("hidden");
 
-  $("#modeTitle").textContent = "Single Player";
-  $("#modeSubtitle").textContent = "Score Chase • Team-by-team";
+  let roster = emptyRoster();
+  let drafted = new Set();
 
   const rosterEl = $("#rosterSingle");
-  const listEl = $("#playersListSingle");
-  const searchEl = $("#searchSingle");
-  const btnReset = $("#btnReset");
-  const btnNextTeam = $("#btnNextTeam");
-  const teamNameEl = $("#currentTeamName");
-  const progressEl = $("#singleProgress");
+  const listEl   = $("#playersListSingle");
 
-  const resultsPanel = $("#resultsPanel");
-  const resultsBody = $("#resultsBody");
+  function pick(p) {
+    const posSet = normalizePos(p.pos);
+    const idx = nextSlotIndex(roster, posSet);
+    if (idx === -1) return alert("No valid roster slot");
 
-  let roster = buildEmptyRoster();
-  let draftedIds = [];
-  let teamsRemaining = shuffle(uniqTeams(players));
-  let currentTeam = teamsRemaining[0] || "—";
-
-  function setBanner() { teamNameEl.textContent = currentTeam || "—"; }
-  function updateProgress() { progressEl.textContent = `${rosterFilledCount(roster)} / ${roster.length}`; }
-
-  function filteredPlayers() {
-    const q = (searchEl.value || "").trim().toLowerCase();
-    const pool = removeDrafted(players, draftedIds).filter(p => p.team === currentTeam);
-    if (!q) return pool;
-    return pool.filter(p => p.name.toLowerCase().includes(q));
-  }
-
-  function maybeComplete() {
-    if (allRosterFilled(roster)) {
-      resultsPanel.classList.remove("hidden");
-      resultsBody.innerHTML = `<div class="muted">Roster filled. (Points intentionally hidden.)</div>`;
-      btnNextTeam.disabled = true;
-    }
-  }
-
-  function draftPlayer(p) {
-    const posSet = normalizePosString(p.pos);
-    const slotIdx = nextValidSlotIndex(roster, posSet);
-    if (slotIdx === -1) {
-      alert(`No valid roster slot available for ${p.name} (${p.pos}).`);
-      return;
-    }
-    roster[slotIdx].player = p;
-    draftedIds.push(p.id);
+    roster[idx].player = p;
+    drafted.add(p.id);
 
     renderRoster(rosterEl, roster);
-    updateProgress();
-    renderPlayersList(listEl, filteredPlayers(), draftPlayer);
-    maybeComplete();
+    renderPlayers(listEl, players.filter(x => !drafted.has(x.id)), pick);
   }
 
-  function nextTeam() {
-    if (!teamsRemaining.length) return;
-    teamsRemaining = teamsRemaining.filter(t => t !== currentTeam);
-    currentTeam = teamsRemaining[0] || "—";
-    setBanner();
-    renderPlayersList(listEl, filteredPlayers(), draftPlayer);
-  }
-
-  function reset() {
-    roster = buildEmptyRoster();
-    draftedIds = [];
-    teamsRemaining = shuffle(uniqTeams(players));
-    currentTeam = teamsRemaining[0] || "—";
-    setBanner();
-    resultsPanel.classList.add("hidden");
-    btnNextTeam.disabled = false;
-    searchEl.value = "";
-    renderRoster(rosterEl, roster);
-    updateProgress();
-    renderPlayersList(listEl, filteredPlayers(), draftPlayer);
-  }
-
-  btnReset.addEventListener("click", reset);
-  btnNextTeam.addEventListener("click", nextTeam);
-  searchEl.addEventListener("input", () => renderPlayersList(listEl, filteredPlayers(), draftPlayer));
-
-  setBanner();
   renderRoster(rosterEl, roster);
-  updateProgress();
-  renderPlayersList(listEl, filteredPlayers(), draftPlayer);
+  renderPlayers(listEl, players, pick);
 }
 
 /* =========================
    VS MODE (SNAKE)
 ========================= */
-function initVs(players) {
-  // show vs UI
+
+function runVs(players) {
   $("#layoutVs").classList.remove("hidden");
   $("#turnPill").style.display = "inline-flex";
 
-  $("#modeTitle").textContent = "2 Player Head-to-Head";
-  $("#modeSubtitle").textContent = "Snake Draft • Blinded";
+  let r1 = emptyRoster();
+  let r2 = emptyRoster();
+  let drafted = new Set();
+  let pick = 0;
 
-  const roster1El = $("#rosterP1");
-  const roster2El = $("#rosterP2");
-  const listEl = $("#playersListVs");
-  const searchEl = $("#searchVs");
-  const btnReset = $("#btnReset");
-  const turnPill = $("#turnPill");
-  const draftInfo = $("#draftInfo");
-  const p1Progress = $("#p1Progress");
-  const p2Progress = $("#p2Progress");
+  const r1El = $("#rosterP1");
+  const r2El = $("#rosterP2");
+  const list = $("#playersListVs");
 
-  const resultsPanel = $("#resultsPanel");
-  const resultsBody = $("#resultsBody");
-
-  let roster1 = buildEmptyRoster();
-  let roster2 = buildEmptyRoster();
-  let draftedIds = [];
-  let pickIndex = 0; // 0..15
-
-  function currentDrafter() {
-    const round = Math.floor(pickIndex / 2);
-    const forward = round % 2 === 0; // round0: P1->P2, round1: P2->P1...
-    const inRoundPick = pickIndex % 2;
-    if (forward) return inRoundPick === 0 ? 1 : 2;
-    return inRoundPick === 0 ? 2 : 1;
+  function drafter() {
+    const round = Math.floor(pick / 2);
+    const forward = round % 2 === 0;
+    return (pick % 2 === 0) === forward ? 1 : 2;
   }
 
-  function updateHeader() {
-    const drafter = currentDrafter();
-    turnPill.textContent = `Turn: Player ${drafter}`;
-    draftInfo.textContent = `Pick ${pickIndex + 1} of 16 • Snake Draft • Click any player to auto-fill`;
-    p1Progress.textContent = `${rosterFilledCount(roster1)} / ${roster1.length}`;
-    p2Progress.textContent = `${rosterFilledCount(roster2)} / ${roster2.length}`;
+  function pickPlayer(p) {
+    const target = drafter() === 1 ? r1 : r2;
+    const posSet = normalizePos(p.pos);
+    const idx = nextSlotIndex(target, posSet);
+    if (idx === -1) return alert("No valid slot");
+
+    target[idx].player = p;
+    drafted.add(p.id);
+    pick++;
+
+    renderRoster(r1El, r1);
+    renderRoster(r2El, r2);
+    renderPlayers(list, players.filter(x => !drafted.has(x.id)), pickPlayer);
   }
 
-  function filteredPlayers() {
-    const q = (searchEl.value || "").trim().toLowerCase();
-    const pool = removeDrafted(players, draftedIds);
-    if (!q) return pool;
-    return pool.filter(p => p.name.toLowerCase().includes(q));
-  }
-
-  function maybeComplete() {
-    if (allRosterFilled(roster1) && allRosterFilled(roster2)) {
-      resultsPanel.classList.remove("hidden");
-      resultsBody.innerHTML = `<div class="muted">Both rosters filled. (Points intentionally hidden.)</div>`;
-    }
-  }
-
-  function draftPlayer(p) {
-    if (pickIndex >= 16) return;
-
-    const drafter = currentDrafter();
-    const targetRoster = drafter === 1 ? roster1 : roster2;
-
-    const posSet = normalizePosString(p.pos);
-    const slotIdx = nextValidSlotIndex(targetRoster, posSet);
-    if (slotIdx === -1) {
-      alert(`Player ${drafter} has no valid roster slot available for ${p.name} (${p.pos}).`);
-      return;
-    }
-
-    targetRoster[slotIdx].player = p;
-    draftedIds.push(p.id);
-    pickIndex += 1;
-
-    renderRoster(roster1El, roster1);
-    renderRoster(roster2El, roster2);
-    updateHeader();
-    renderPlayersList(listEl, filteredPlayers(), draftPlayer);
-    maybeComplete();
-  }
-
-  function reset() {
-    roster1 = buildEmptyRoster();
-    roster2 = buildEmptyRoster();
-    draftedIds = [];
-    pickIndex = 0;
-    resultsPanel.classList.add("hidden");
-    searchEl.value = "";
-    renderRoster(roster1El, roster1);
-    renderRoster(roster2El, roster2);
-    updateHeader();
-    renderPlayersList(listEl, filteredPlayers(), draftPlayer);
-  }
-
-  btnReset.addEventListener("click", reset);
-  searchEl.addEventListener("input", () => renderPlayersList(listEl, filteredPlayers(), draftPlayer));
-
-  renderRoster(roster1El, roster1);
-  renderRoster(roster2El, roster2);
-  updateHeader();
-  renderPlayersList(listEl, filteredPlayers(), draftPlayer);
+  renderRoster(r1El, r1);
+  renderRoster(r2El, r2);
+  renderPlayers(list, players, pickPlayer);
 }
 
 /* =========================
    BOOT
 ========================= */
-(async function boot(){
+
+(async function () {
   try {
+    const players = await loadPlayers();
     const mode = getMode();
 
-    const players = await loadPlayers();
+    if (mode === "vs") runVs(players);
+    else runSingle(players);
 
-    // hide both layouts, then show one
-    $("#layoutSingle").classList.add("hidden");
-    $("#layoutVs").classList.add("hidden");
-    $("#teamBanner").classList.add("hidden");
-    $("#turnPill").style.display = "none";
-
-    if (mode === "single") initSingle(players);
-    else initVs(players);
-
-  } catch (err) {
-    console.error(err);
-    alert(String(err.message || err));
+  } catch (e) {
+    console.error(e);
+    alert(e.message);
   }
 })();
