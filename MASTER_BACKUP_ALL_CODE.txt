@@ -9,7 +9,61 @@ NOTE:
 ------------------------------------------------------------
 FILE: index.html
 ------------------------------------------------------------
-[PASTE YOUR index.html HERE]
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NHL Pick’em Draft by MayerBros</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar topbar-grid">
+    <div class="topbar-left"></div>
+
+    <div class="topbar-center">
+      <div class="title">NHL Pick’em Draft by MayerBros</div>
+      <div class="subtitle muted">Choose a game mode</div>
+    </div>
+
+    <div class="topbar-right">
+      <div class="qrbox">
+        <img class="qr" src="assets/qr.png" alt="QR code" />
+        <div class="qrlabel">Scan to open on phone or tablet</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="landing-wrap">
+    <section class="panel landing-panel">
+      <div class="broadcast-bar"></div>
+
+      <div class="landing-head">
+        <div class="landing-title">Choose a game mode</div>
+        <div class="muted">Clean, fast, and mobile-friendly. No installs. Just play.</div>
+      </div>
+
+      <div class="mode-grid">
+        <a class="mode-card" href="single.html">
+          <div class="mode-icon">👤</div>
+          <div class="mode-name">Single Player</div>
+          <div class="mode-desc muted">Draft alone and chase your best score.</div>
+        </a>
+
+        <a class="mode-card" href="vs.html">
+          <div class="mode-icon">👥</div>
+          <div class="mode-name">Versus Mode</div>
+          <div class="mode-desc muted">Snake draft head-to-head. Points shown live.</div>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
 
 ------------------------------------------------------------
 FILE: single.html
