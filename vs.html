@@ -17,12 +17,12 @@
     <div class="topbar-center">
       <div class="title">NHL Pick’em Draft by MayerBros</div>
       <div class="subtitle muted">
-        2 Player Head-to-Head • Same team for both picks • Snake rounds • FLEX = C/LW/RW only
+        2 Player Head-to-Head • Snake team rounds • Team: <span id="vsTeamMini">—</span> • Blinded
       </div>
     </div>
 
     <div class="topbar-right">
-      <button class="btn" id="resetVsBtn" type="button">Reset</button>
+      <button class="btn" id="resetVsBtn">Reset</button>
 
       <div class="qrbox">
         <img class="qr" src="assets/qr.png" alt="QR code" />
@@ -59,7 +59,7 @@
             <div class="pill tiny"><span id="p1Filled">0</span>/8</div>
           </div>
         </div>
-        <div class="muted small roster-rule">Click slot to target • Or draft directly from list</div>
+        <div class="muted small roster-rule">Click any slot to target that slot • Or draft directly from list</div>
         <div class="roster-list" id="p1Roster"></div>
       </aside>
 
@@ -69,9 +69,11 @@
           <div class="muted small" id="filterLabel">All positions</div>
         </div>
 
+        <div class="midline" id="midLine">Round 1 of 8 • Team — • Pick 1 of 16</div>
+
         <div class="search-row">
           <input id="searchInput" class="search" type="search" placeholder="Search player..." />
-          <button class="btn tiny" id="clearFilterBtn" type="button">All</button>
+          <button class="btn tiny" id="clearFilterBtn">All</button>
         </div>
 
         <div class="players-list" id="playersList"></div>
@@ -86,7 +88,7 @@
             <div class="pill tiny"><span id="p2Filled">0</span>/8</div>
           </div>
         </div>
-        <div class="muted small roster-rule">Click slot to target • Or draft directly from list</div>
+        <div class="muted small roster-rule">Click any slot to target that slot • Or draft directly from list</div>
         <div class="roster-list" id="p2Roster"></div>
       </aside>
     </section>
@@ -97,7 +99,7 @@
       <div class="modal-title" id="winnerTitle">Winner</div>
       <div class="modal-sub muted" id="endSummary">Draft complete.</div>
       <div class="modal-actions">
-        <button class="btn" id="playAgainBtn" type="button">Play Again</button>
+        <button class="btn" id="playAgainBtn">Play Again</button>
         <a class="btn ghost" href="index.html">Home</a>
       </div>
     </div>
