@@ -1,6 +1,6 @@
 (function () {
-  const mode = document.body.dataset.mode; // "single" | "vs" | "home"
-  if (!mode || mode === "home") return;
+  const mode = document.body.dataset.mode; // "single" | "vs"
+  if (!mode) return;
 
   const TEAM_CODES = [
     "ANA","BOS","BUF","CAR","CBJ","CGY","CHI","COL","DAL","DET","EDM","FLA",
@@ -10,7 +10,7 @@
 
   const SLOT_ORDER = ["C","LW","RW","D","D","G","FLEX","FLEX"];
   const FLEX_ALLOWED = new Set(["C","LW","RW"]);
-  const HIGH_SCORE_KEY = "nhl_pickem_highscore_v5";
+  const HIGH_SCORE_KEY = "nhl_pickem_highscore_v6";
   const CLOCK_SECONDS = 30;
 
   const els = {
@@ -25,7 +25,8 @@
     endSummary: document.getElementById("endSummary"),
     playAgainBtn: document.getElementById("playAgainBtn"),
     timerText: document.getElementById("timerText"),
-    midLine: document.getElementById("midLine"),
+    onClock: document.getElementById("onClock"),
+    winnerTitle: document.getElementById("winnerTitle"),
   };
 
   const single = mode === "single" ? {
@@ -36,7 +37,6 @@
     highScore: document.getElementById("highScore"),
     newGameBtn: document.getElementById("newGameBtn"),
     resetHighScoreBtn: document.getElementById("resetHighScoreBtn"),
-    resetSingleBtn: document.getElementById("resetSingleBtn"),
   } : null;
 
   const vs = mode === "vs" ? {
@@ -46,16 +46,12 @@
     p2Filled: document.getElementById("p2Filled"),
     p1Total: document.getElementById("p1Total"),
     p2Total: document.getElementById("p2Total"),
-    onClock: document.getElementById("onClock"),
     resetVsBtn: document.getElementById("resetVsBtn"),
-    winnerTitle: document.getElementById("winnerTitle"),
-    vsTeamMini: document.getElementById("vsTeamMini"),
   } : null;
 
   let allPlayers = [];
   let draftedIds = new Set();
 
-  // Filter/target rules (your confirmed behavior)
   let activeSlotFilter = null;  // view filter
   let activeSlotTarget = null;  // target slot for draft placement
   let searchText = "";
@@ -118,9 +114,12 @@
     return arr;
   }
 
+  function hardHideModal() {
+    if (els.endModal) els.endModal.classList.add("hidden");
+  }
+
   function setTeam(team) {
     currentTeam = team;
-    if (vs?.vsTeamMini) vs.vsTeamMini.textContent = team;
     if (els.heroLogo) {
       els.heroLogo.src = logoPath(team);
       els.heroLogo.onerror = () => { els.heroLogo.src = ""; };
@@ -152,18 +151,10 @@
     return pos.has(slot);
   }
 
-  function openSlotIndices(roster) {
-    const idxs = [];
-    for (let i = 0; i < SLOT_ORDER.length; i++) if (!roster[i]) idxs.push(i);
-    return idxs;
-  }
-
-  // Auto-fill order: main slots before FLEX (SLOT_ORDER already does that)
   function firstOpenMatchingIndex(roster, player) {
     for (let i = 0; i < SLOT_ORDER.length; i++) {
       if (roster[i]) continue;
-      const slot = SLOT_ORDER[i];
-      if (isEligibleForSlot(player, slot)) return i;
+      if (isEligibleForSlot(player, SLOT_ORDER[i])) return i;
     }
     return -1;
   }
@@ -175,19 +166,25 @@
     return -1;
   }
 
+  function playerCanFillAnyOpenSlot(player, roster) {
+    return firstOpenMatchingIndex(roster, player) !== -1;
+  }
+
   function availablePlayersForCurrentTeam() {
     return allPlayers.filter(p => playerTeam(p) === currentTeam && !draftedIds.has(playerId(p)));
   }
 
+  // VS snake logic inside 2-pick rounds:
+  // Round 1: P1 then P2
+  // Round 2: P2 then P1
+  // Team rerolls AFTER both picks in the round
   function currentPickerRoster() {
     if (mode === "single") return sRoster;
 
-    // VS snake within each 2-pick team round:
-    // pick 1&2 = round1, pick 3&4 = round2, etc.
-    // odd rounds: P1 then P2, even rounds: P2 then P1
-    const pickNo = vPickIndex + 1;
-    const round = Math.ceil(pickNo / 2);
-    const firstInRound = (pickNo % 2 === 1);
+    const pickNo = vPickIndex + 1;            // 1..16
+    const round = Math.ceil(pickNo / 2);      // 1..8
+    const firstInRound = (pickNo % 2 === 1);  // pick 1 of round?
+
     const p1Turn = (round % 2 === 1) ? firstInRound : !firstInRound;
     return p1Turn ? vRoster1 : vRoster2;
   }
@@ -197,14 +194,29 @@
     return currentPickerRoster() === vRoster1 ? "Player 1" : "Player 2";
   }
 
-  // VS: reroll AFTER both players pick from same team (after pick 2,4,6,...)
   function shouldRerollTeamAfterPick() {
     if (mode === "single") return true;
+    // after pick 2,4,6... (end of each 2-pick round)
     return (vPickIndex % 2 === 0);
   }
 
-  function playerCanFillAnyOpenSlot(player, roster) {
-    return firstOpenMatchingIndex(roster, player) !== -1;
+  function rerollTeamForRoster(roster) {
+    // Only reroll if roster still has open slots
+    if (roster.every(Boolean)) return;
+
+    let attempts = 0;
+    while (attempts < 500) {
+      if (teamBag.length === 0) teamBag = makeTeamBag();
+      const team = teamBag.shift();
+
+      const pool = allPlayers.filter(p => playerTeam(p) === team && !draftedIds.has(playerId(p)));
+      const ok = pool.some(pl => playerCanFillAnyOpenSlot(pl, roster));
+      if (ok) { setTeam(team); return; }
+
+      attempts++;
+    }
+
+    setTeam(TEAM_CODES[Math.floor(Math.random() * TEAM_CODES.length)]);
   }
 
   function canDraftPlayerNow(player, roster) {
@@ -216,40 +228,14 @@
     return playerCanFillAnyOpenSlot(player, roster);
   }
 
-  function rerollTeamForRoster(roster) {
-    const openIdxs = openSlotIndices(roster);
-    if (openIdxs.length === 0) return;
-
-    const openSlots = openIdxs.map(i => SLOT_ORDER[i]);
-
-    let attempts = 0;
-    while (attempts < 400) {
-      if (teamBag.length === 0) teamBag = makeTeamBag();
-      const team = teamBag.shift();
-
-      const pool = allPlayers.filter(p => playerTeam(p) === team && !draftedIds.has(playerId(p)));
-      const ok = pool.some(pl => openSlots.some(slot => isEligibleForSlot(pl, slot)));
-      if (ok) {
-        setTeam(team);
-        return;
-      }
-      attempts++;
-    }
-
-    setTeam(TEAM_CODES[Math.floor(Math.random() * TEAM_CODES.length)]);
-  }
-
   function renderPlayers() {
     const roster = currentPickerRoster();
 
-    // Always show ONLY players from current team that can fill at least one open slot for active drafter
     let pool = availablePlayersForCurrentTeam()
       .filter(p => playerCanFillAnyOpenSlot(p, roster));
 
-    // Optional slot filter (if user clicked a slot)
     if (activeSlotFilter) pool = pool.filter(p => isEligibleForSlot(p, activeSlotFilter));
 
-    // Search
     const q = searchText.trim().toLowerCase();
     if (q) {
       pool = pool.filter(p => {
@@ -273,6 +259,7 @@
       logo.alt = `${currentTeam} logo`;
 
       const info = document.createElement("div");
+
       const nm = document.createElement("div");
       nm.className = "player-name";
       nm.textContent = playerName(p);
@@ -288,11 +275,12 @@
       btn.className = "draft-btn";
       btn.textContent = "Draft";
       btn.disabled = !canDraftPlayerNow(p, roster);
-      btn.addEventListener("click", () => draftPlayer(p, { isAuto: false }));
+      btn.addEventListener("click", () => draftPlayer(p, { isAuto:false }));
 
       row.appendChild(logo);
       row.appendChild(info);
       row.appendChild(btn);
+
       els.playersList.appendChild(row);
     }
   }
@@ -303,9 +291,6 @@
 
   function updateHeaderLines() {
     if (mode === "single") {
-      if (els.midLine) els.midLine.textContent =
-        `Round ${sPickIndex + 1} of 8 • Team ${currentTeam || "—"} • Pick ${sPickIndex + 1} of 8`;
-
       els.roundPickLine.textContent =
         `Round ${sPickIndex + 1} of 8 • Pick ${sPickIndex + 1} of 8 • Team ${currentTeam || "—"}`;
 
@@ -318,16 +303,14 @@
     } else {
       const pickNo = vPickIndex + 1;
       const round = Math.ceil(pickNo / 2);
-      const line = `Round ${round} of 8 • Pick ${pickNo} of 16 • Team ${currentTeam || "—"}`;
-      els.roundPickLine.textContent = line;
-      if (els.midLine) els.midLine.textContent = line;
 
-      vs.onClock.textContent = onClockLabel();
+      els.roundPickLine.textContent =
+        `Round ${round} of 8 • Pick ${pickNo} of 16 • Team ${currentTeam || "—"}`;
 
-      const f1 = vRoster1.filter(Boolean).length;
-      const f2 = vRoster2.filter(Boolean).length;
-      vs.p1Filled.textContent = String(f1);
-      vs.p2Filled.textContent = String(f2);
+      if (els.onClock) els.onClock.textContent = onClockLabel();
+
+      vs.p1Filled.textContent = String(vRoster1.filter(Boolean).length);
+      vs.p2Filled.textContent = String(vRoster2.filter(Boolean).length);
 
       if (vs.p1Total) vs.p1Total.textContent = String(Math.round(sumRoster(vRoster1)));
       if (vs.p2Total) vs.p2Total.textContent = String(Math.round(sumRoster(vRoster2)));
@@ -345,14 +328,12 @@
       const btn = document.createElement("button");
       btn.className = "slot-btn" + (activeSlotTarget === slot ? " active" : "");
       btn.textContent = slot;
+      btn.type = "button";
 
       btn.addEventListener("click", () => {
         const next = (activeSlotTarget === slot) ? null : slot;
         activeSlotTarget = next;
         activeSlotFilter = next;
-
-        // IMPORTANT: selecting a slot is allowed, but list can still draft directly.
-        // We just filter the view; Draft will still auto-place if user clicks Draft elsewhere after clearing.
         updateFilterLabel();
         renderAll();
       });
@@ -394,14 +375,12 @@
     stopClock();
     secondsLeft = CLOCK_SECONDS;
     setTimerUI();
-
     if (isDraftOver()) return;
-    if (!els.endModal || !els.endModal.classList.contains("hidden")) return;
+    if (els.endModal && !els.endModal.classList.contains("hidden")) return;
 
     clockInterval = setInterval(() => {
       secondsLeft--;
       setTimerUI();
-
       if (secondsLeft <= 0) {
         stopClock();
         autoDraftOnTimeout();
@@ -412,7 +391,7 @@
   function autoDraftOnTimeout() {
     if (isDraftOver()) return;
 
-    // Reset filters before auto pick (your rule)
+    // reset filters before auto
     activeSlotTarget = null;
     activeSlotFilter = null;
     searchText = "";
@@ -422,32 +401,27 @@
     const roster = currentPickerRoster();
     const pool = availablePlayersForCurrentTeam();
 
-    let chosenPlayer = null;
+    let chosen = null;
 
-    // Auto-fill: next open slot in roster order, choose best points eligible
+    // pick best eligible for next open slot in roster order
     for (let i = 0; i < SLOT_ORDER.length; i++) {
       if (roster[i]) continue;
       const slot = SLOT_ORDER[i];
-
       const eligible = pool.filter(p => isEligibleForSlot(p, slot));
       if (!eligible.length) continue;
-
-      eligible.sort((a, b) => playerPoints(b) - playerPoints(a));
-      chosenPlayer = eligible[0];
+      eligible.sort((a,b) => playerPoints(b) - playerPoints(a));
+      chosen = eligible[0];
       break;
     }
 
-    // Fallback: any player that can fill anything
-    if (!chosenPlayer) {
+    // fallback
+    if (!chosen) {
       const any = pool.filter(p => playerCanFillAnyOpenSlot(p, roster));
-      if (any.length) {
-        any.sort((a, b) => playerPoints(b) - playerPoints(a));
-        chosenPlayer = any[0];
-      }
+      any.sort((a,b) => playerPoints(b) - playerPoints(a));
+      chosen = any[0] || null;
     }
 
-    if (chosenPlayer) draftPlayer(chosenPlayer, { isAuto: true });
-    else stopClock();
+    if (chosen) draftPlayer(chosen, { isAuto:true });
   }
 
   function draftPlayer(player, { isAuto }) {
@@ -457,14 +431,12 @@
 
     let placeIndex = -1;
 
-    // If user clicked a slot, they can target that slot (not for auto)
     if (activeSlotTarget && !isAuto) {
       const idx = firstOpenIndexForSlot(roster, activeSlotTarget);
       if (idx === -1) return;
       if (!isEligibleForSlot(player, activeSlotTarget)) return;
       placeIndex = idx;
     } else {
-      // Draft from full list: auto-fills first open matching slot (main slots before FLEX)
       const idx = firstOpenMatchingIndex(roster, player);
       if (idx === -1) return;
       placeIndex = idx;
@@ -483,25 +455,24 @@
       }
 
       resetFiltersAfterPick();
-
       if (sPickIndex < 8) rerollTeamForRoster(sRoster);
     } else {
       vPickIndex++;
 
       resetFiltersAfterPick();
-
-      // Reroll AFTER both players pick from same team
       if (vPickIndex < 16 && shouldRerollTeamAfterPick()) {
+        // reroll based on whoever is about to pick next
         rerollTeamForRoster(currentPickerRoster());
       }
     }
 
     renderAll();
 
-    // End states
+    // end conditions
     if (mode === "single" && sPickIndex >= 8) {
-      els.endSummary.textContent = `Final Score: ${Math.round(sScore)} • High Score: ${Math.round(highScore)}`;
-      els.endModal.classList.remove("hidden");
+      if (els.endSummary) els.endSummary.textContent =
+        `Final Score: ${Math.round(sScore)} • High Score: ${Math.round(highScore)}`;
+      if (els.endModal) els.endModal.classList.remove("hidden");
       stopClock();
       return;
     }
@@ -510,12 +481,13 @@
       const p1 = Math.round(sumRoster(vRoster1));
       const p2 = Math.round(sumRoster(vRoster2));
 
-      if (p1 > p2) vs.winnerTitle.textContent = "PLAYER 1 WINS";
-      else if (p2 > p1) vs.winnerTitle.textContent = "PLAYER 2 WINS";
-      else vs.winnerTitle.textContent = "TIE";
+      if (els.winnerTitle) {
+        els.winnerTitle.textContent = (p1 > p2) ? "PLAYER 1 WINS" : (p2 > p1) ? "PLAYER 2 WINS" : "TIE";
+      }
+      if (els.endSummary) els.endSummary.textContent =
+        `Final Score — Player 1: ${p1} • Player 2: ${p2}`;
 
-      els.endSummary.textContent = `Final Score — Player 1: ${p1} • Player 2: ${p2}`;
-      els.endModal.classList.remove("hidden");
+      if (els.endModal) els.endModal.classList.remove("hidden");
       stopClock();
       return;
     }
@@ -541,14 +513,7 @@
     const data = await res.json();
     const list = Array.isArray(data) ? data : (data.players || []);
     allPlayers = list;
-
-    // remove “Loaded 600 players…” everywhere
-    if (els.dataStatus) els.dataStatus.textContent = "";
-  }
-
-  function hardHideModal() {
-    // Fixes your screenshot issue: modal showing immediately
-    if (els.endModal) els.endModal.classList.add("hidden");
+    if (els.dataStatus) els.dataStatus.textContent = ""; // hide loaded text
   }
 
   function resetSingle(keepHigh=true) {
@@ -558,12 +523,13 @@
     sRoster = Array(8).fill(null);
     sPickIndex = 0;
     sScore = 0;
+
     highScore = keepHigh ? loadHighScore() : 0;
     if (!keepHigh) saveHighScore(0);
 
     resetFiltersAfterPick();
-    rerollTeamForRoster(sRoster);
     hardHideModal();
+    rerollTeamForRoster(sRoster);
     renderAll();
     startClockForPick();
   }
@@ -577,8 +543,8 @@
     vPickIndex = 0;
 
     resetFiltersAfterPick();
-    rerollTeamForRoster(currentPickerRoster());
     hardHideModal();
+    rerollTeamForRoster(currentPickerRoster());
     renderAll();
     startClockForPick();
   }
@@ -608,7 +574,6 @@
         saveHighScore(0);
         renderAll();
       });
-      single.resetSingleBtn?.addEventListener("click", ()=> resetSingle(true));
     } else {
       vs.resetVsBtn?.addEventListener("click", ()=> resetVs());
     }
@@ -623,7 +588,6 @@
     wire();
     updateFilterLabel();
     hardHideModal();
-
     await loadPlayers();
 
     teamBag = makeTeamBag();
@@ -632,12 +596,10 @@
       highScore = loadHighScore();
       rerollTeamForRoster(sRoster);
       renderAll();
-      hardHideModal();
       startClockForPick();
     } else {
       rerollTeamForRoster(currentPickerRoster());
       renderAll();
-      hardHideModal();
       startClockForPick();
     }
   })();
