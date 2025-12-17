@@ -26,7 +26,6 @@
           <button class="btn tiny" id="resetHighScoreBtn">Reset</button>
         </div>
         <div class="pill">Score: <span id="currentScore">0</span></div>
-        <div class="pill timerpill">⏱ <span id="timerText">0:30</span></div>
       </div>
 
       <div class="qrbox">
@@ -44,6 +43,8 @@
 
       <div class="team-stage">
         <img id="heroLogo" class="hero-logo" alt="Team logo" />
+        <!-- ✅ timer moved under logo -->
+        <div class="pill timerpill timer-under-logo">⏱ <span id="timerText">0:30</span></div>
       </div>
 
       <div class="roundline">
@@ -74,6 +75,7 @@
         </div>
 
         <div class="players-list" id="playersList"></div>
+        <!-- kept for structure; we hide it via CSS + app.js no longer writes text -->
         <div class="muted small note" id="dataStatus"></div>
       </section>
     </section>
